@@ -16,7 +16,8 @@
 		],
 		"types": [
 			"three",
-			"d3"
+			"d3",
+			"aframe"
 		],
 		"lib": [
 			"es2017",

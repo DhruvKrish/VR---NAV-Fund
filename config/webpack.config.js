@@ -2,10 +2,10 @@ const path=require('path');
 
 module.exports = {
 	// entry: './src/main.ts'
-	entry: path.resolve(_dirname, '../src/main.ts'),
+	entry: path.resolve(__dirname, '../src/main.ts'),
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(_dirname,'dist'),
+		path: path.resolve(__dirname,'dist'),
 		publicPath: 'dist'
 	},
 	module: {
