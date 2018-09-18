@@ -1,0 +1,26 @@
+<!doctype html>
+
+<head>
+  <script src="js/aframe.js"></script>
+</head>
+
+<body>
+
+<a-scene>  
+  <a-assets>
+    <!-- https://freestocktextures.com/texture/brick-wall-renovated,760.html -->
+	  <img id="brick-texture" src="content/brick.jpg">
+  </a-assets>
+
+
+  <a-box position="0 1 -5" rotation="0 45 0" width="4" height="4" depth="4" material="src: #brick-texture">
+    <a-animation attribute="rotation" repeat="indefinite" to="0 360 0" fill="forwards" dur="10000"></a-animation> 
+  </a-box>
+
+</a-scene>
+
+</body>
+
+
+
+

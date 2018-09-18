@@ -21,12 +21,12 @@ module.exports = {
 		extensions: [".ts", ".js"]
 	},
 	devServer: {
-		historyApiFallback: {
-			rewrites: [
-				{
-					from: /./,to:'/src/index.html'
-				}
-			]
-		}
+		// historyApiFallback: {
+		// 	rewrites: [
+		// 		{
+		// 			from: /./,to:'/src/index.html'
+		// 		}
+		// 	]
+		// }
 	}
 };

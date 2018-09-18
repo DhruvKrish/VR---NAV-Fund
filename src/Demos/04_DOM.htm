@@ -1,0 +1,52 @@
+<!doctype html>
+
+<head>
+	<script src="js/aframe.js"></script>
+</head>
+
+<body>
+
+	<input type="button" id="myButton" value="Test" style="margin:50px; font-size: 20px;"></input>
+
+	<a-scene>  
+  		<a-box id="myBox" position="0 1 -5" rotation="0 45 0" width="2" height="2" depth="2" color="#ff0000"></a-box>  
+	</a-scene>
+
+	<script>
+	var button=document.querySelector('#myButton');
+
+	button.addEventListener('click', function() {
+		var scene = document.querySelector('a-scene'),
+			myBox = document.querySelector('#myBox');
+		
+		debugger;
+		
+		myBox.setAttribute('color', '#ff00ff');
+		
+		myBox.setAttribute('geometry', {
+			height: 3,
+			width: 1
+		});
+
+		var secondBox = document.createElement('a-box');
+		
+		secondBox.setAttribute('position', {
+			x: 6,
+			y: 1,
+			z: -5
+		})
+		
+		secondBox.setAttribute('width', 2);
+		secondBox.setAttribute('height', 2);
+		secondBox.setAttribute('depth', 2);	
+		secondBox.setAttribute('color', '#00ff00');
+		
+		scene.appendChild(secondBox);
+	});
+	</script>
+
+</body>
+
+
+
+

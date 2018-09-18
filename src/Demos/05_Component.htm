@@ -1,0 +1,39 @@
+<doctype html>
+
+<head>
+  <script src="js/aframe.js"></script>
+
+  <script>
+    AFRAME.registerComponent('random-color-on-click', {  
+      schema: {default: ''},
+      init() {
+        this.el.addEventListener('click', () => {      
+          //http://stackoverflow.com/questions/5092808/how-do-i-randomly-generate-html-hex-color-codes-using-javascript
+          var randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+          this.el.setAttribute('color', randomColor);
+        });
+      }
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <a-scene>
+    
+    <a-camera position="0 2 4">
+      <a-cursor color="#4CC3D9" fuse="true" timeout="10"></a-cursor>
+    </a-camera>
+    
+    <a-box id="box1" random-color-on-click position="0 1 -5" width="2" height="2" depth="2" color="#ff0000"></a-box>
+    <a-box id="box2" random-color-on-click position="8 1 -5"width="2" height="2" depth="2" color="#ff0000"></a-box>
+    
+  </a-scene>
+
+</body>
+
+
+
+
+

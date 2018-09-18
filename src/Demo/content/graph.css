@@ -1,0 +1,25 @@
+#chart {	
+	background: #eee;
+} 
+
+span {
+	font-family: verdana;
+	font-size: 13px;
+}
+
+.bar-container {
+	background: #e6e7ed;
+	margin: 1px;
+	width: 100%;
+	display: block;
+}
+
+.bar {
+  margin-top: 10px;
+  font: 10px sans-serif;
+  background-color: #7E9518;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
