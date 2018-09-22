@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>I-Learn</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="/dist/bundle.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.3/dist/aframe-extras.min.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <a-scene>
+        <a-assets>
+            <img id="franceMap" src="./assets/france3dMap.png">
+            <img id="germanyMap" src="./assets/germany3dMap.png">
+            <img id="luxembourgMap" src="./assets/luxembourg3dMap.jpg">
+            <img id="italyMap" src="./assets/italy3dMap.png">
+            <img id="ukMap" src="./assets/uk3dMap.jpg">
+            <img id="irelandMap" src="./assets/ireland3dMap.jpg">
+            <img id="indiaMap" src="./assets/india3dMap.jpg">
+            <img id="globalMap" src="./assets/worldMap.jpg">
+            <img id="cross" src="./assets/cross.png">
+            <img id="galaxy" src="./assets/cropped-starglobe-maya-render.jpg">
+            <img id="milkyway" src="./assets/milky-way-starry-sky-night-sky-star-956981.jpeg">
+            <img id="space" src="./assets/space-wallpaper.jpg">
+            <img id="finland" src="./assets/finland.jpg">
+            <img id="pia" src="./assets/PIA12348_hires.jpg">
+            <img id="germanyTest" src="./assets/germanyTest.jpg">
+
+        </a-assets>
+
+        <a-camera id="camera" position="0.6 1 20">
+            <a-cursor color="#4CC3D9" fuse="true" fuse-timeout="2000"></a-cursor>
+        </a-camera>
+        <!-- <a-entity light="type: directional; color: white; intensity: 0.6" position="0 0 1"></a-entity>
+        <a-entity light="type: ambient; color: #CCC; intensity: 0.6"></a-entity> -->
+
+        <!-- <a-plane id="map" material="src: #franceMap;" rotation="0 0 0" width="25.6" height="23.54" scale="0.2 0.2 0.2" position="8.577 -5 0" transparent="true" show-funds="france">
+        </a-plane>
+
+        <a-plane id="map" material="src: #germanyMap;" rotation="0 0 0" width="25.6" height="23.54" scale="0.2 0.2 0.2" position="-9.510 -5 0" transparent="true" show-funds="germany">
+        </a-plane>
+
+        <a-plane id="map" material="src: #luxembourgMap;" rotation="0 0 0" width="25.6" height="23.54" scale="0.2 0.2 0.2" position="-9.537 0 0.000" transparent="true" show-funds="luxembourg">
+        </a-plane>
+
+        <a-plane id="map" material="src: #italyMap;" rotation="0 0 0" width="25.6" height="23.54" scale="0.2 0.2 0.2" position="0 0 0" transparent="true" show-funds="italy">
+        </a-plane>
+
+        <a-plane id="map" material="src: #ukMap;" rotation="0 0 0" width="25.6" height="23.54" scale="0.2 0.2 0.2" position="8.463 0 0" transparent="true" show-funds="uk"> 
+        </a-plane>
+
+        <a-plane id="map" material="src: #irelandMap;" rotation="0 0 0" width="25.6" height="23.54" scale="0.2 0.2 0.2" position="0 -5 0" transparent="true" show-funds="ireland">
+        </a-plane> -->
+
+        <!-- <a-plane id="map" material="src: #indiaMap;" rotation="0 0 0" width="25.6" height="23.54" scale="0.2 0.2 0.2" position="-0.64 -2.058 0"
+            transparent="true">
+        </a-plane> -->
+
+        <a-sky material="src: #pia" rotation="0 -90 0"></a-sky>
+        <!-- <a-ocean id="ocean" width="100" depth="100" density="150" opacity="0.1" position="0 -1 0" visible="false"></a-ocean> -->
+        <a-sphere id="globe" rotation="-18.867 -105.984 -32.467" radius="15" material="src: #globalMap" position="0 0 -30">
+            <a-animation attribute="position" dur="1000" fill="forwards" to="-5 -5 -50" begin="goingbackwards"></a-animation>
+            <a-animation attribute="scale" dur="1000" to="2 2 2" easing="ease" begin="goingbackwards"></a-animation>
+            <a-animation attribute="position" dur="1000" fill="forwards" to="0 0 -30" begin="goingforwards"></a-animation>
+            <!-- <a-cylinder id="franceSelector" color="crimson" radius="0.2" position="10.161901598657424 10.188288722069702 0.9833758879297012"
+                material="" geometry="height:10" select-view="france" rotation="-2 -6 5"></a-cylinder> -->
+
+            <!-- <a-cylinder id="irelandSelector" color="crimson" radius="0.2" position="8.717710538653353 11.995542652476495 2.6601039677365"
+                material="" geometry="height:10" select-view="ireland"></a-cylinder>
+
+            <a-cylinder id="ukSelector" color="crimson" radius="0.2" position="9.094360569329625 11 1.8269029318489673"
+                material="" geometry="height:10" select-view="uk"></a-cylinder> -->
+
+            <!-- <a-cylinder id="germanySelector" color="crimson" radius="0.2" position="9.360051832117442 10.559639235487014 0.04622105564678604" material="" geometry="height:10" select-view="germany"></a-cylinder> -->
+
+            <!-- <a-cylinder id="italySelector" color="crimson" radius="0.2" position="10.896546816424456 10.03576544682047 -0.3192756354326113" material="" geometry="height:10" select-view="italy"></a-cylinder> -->
+
+            <!-- <a-cylinder id="indiaSelector" color="crimson" radius="0.2" position="6.249140661997774 7.908579912456541 -12.51246029566455" material="" geometry="height:10" rotation="10.114309410604069 9.060653811831703 -10.452103193108652" select-view="india"> -->
+
+
+
+            </a-cylinder>
+        </a-sphere>
+
+
+        <a-plane id="countryFocusPlane" material="transparent: true" rotation="-32 0 0" width="25.6" height="23.54"
+            scale="0.8 0.8 0.8" position="-0.64 -3.058 -10" visible="false">
+        </a-plane>
+
+        <a-cylinder id="maincyl" position="3.885 11.619 -9.718" radius="0.5" height="2.48" color="#FFC65D" shadow=""
+            material="color:#00f900" geometry="" scale="1.79 1.846 4.048"></a-cylinder>
+
+        <a-cylinder id="maincyl-2" position="1.895 11.6 -6" radius="0.5" height="2.48" color="#FFC65D" shadow=""
+            material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661"></a-cylinder>
+
+        <a-cylinder id="maincyl-3" position="6.024 11.318 -9.146" radius="0.5" height="2.48" color="#FFC65D" shadow=""
+            material="color:#ff9300" geometry="" scale="1.79 1.846 4.048"></a-cylinder>
+
+        <a-plane select-view="global" color="red" position="-15.648 11.453 -9.166" material="src: #cross" transparent="true"
+            geometry="" scale="1.995 1.995 1.995"></a-plane>
+
+        <a-plane id="franceMapPlane" material="src: #germanyTest" transparent="true" rotation="-32 0 0" width="25.6"
+            height="23.54" scale="0.8 0.8 0.8" position="-0.64 -3.058 -10" visible="false" geometry="">
+        </a-plane>
+
+
+        <a-box position="-12.888 9.93 -9.349" depth="0.5" height="0.5" width="0.5" material="color:#00f900" geometry=""></a-box>
+
+        <a-text position="-11.775 9.911 -9.298" scale="3.7 3.7 3.7" text="value:Total funds processed;color:#00fdff"></a-text>
+
+        <a-box position="-12.767 11.383 -9.209" depth="0.5" height="0.5" width="0.5" material="color:#116810" geometry=""
+            visible=""></a-box>
+
+        <a-box position="-12.563 12.968 -8.757" depth="0.5" height="0.5" width="0.5" material="color:#ff9300" geometry=""
+            visible=""></a-box>
+
+        <a-text position="-11.707 11.331 -9.275" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed within cutoff"></a-text>
+
+        <a-text position="-11.492 12.719 -8.975" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed after cutoff"></a-text>
+
+        <!-- <a-plane id="first" position="-2 11 -15" material="side: double; color: red; transparent: true; opacity: 1" width="60" height="25" swap-plane="first">
+            <a-animation begin="swap" attribute="position" dur="5000" to="-2 9 -20"></a-animation>
+        </a-plane>
+
+        <a-plane id="second" position="-2 9 -20" material="side: double; color: blue; transparent: true; opacity: 1" width="50" height="20" swap-plane="second">
+                <a-animation begin="swap" attribute="position" dur="5000" to="-2 11 -15"></a-animation>
+        </a-plane> -->
+
+        <a-entity id="luxembourgEntity" line="start:15 0 0;end:-5 5 -10;color:red" scale="" position="-17.860 4.526 -14.137">
+                <a-ring select-view="luxembourg" color="red" radius-inner="2" radius-outer="4" rotation="9.50 43.478 160.442"
+                    position="-4.181 5.927 -5.536">
+                    <a-ring color="blue" radius-inner="0.01" radius-outer="2"></a-ring>
+                </a-ring>
+            </a-entity>
+
+        <a-entity id="franceEntity" line="start:15 0 0;end:-5 5 -10;color:red" scale="" position="-17.860 4.526 -14.137">
+                <a-ring select-view="france" color="red" radius-inner="2" radius-outer="4" rotation="9.50 43.478 160.442"
+                    position="-4.181 5.927 -5.536">
+                    <a-ring color="blue" radius-inner="0.01" radius-outer="2"></a-ring>
+                </a-ring>
+            </a-entity>
+
+        <a-entity id="irelandEntity" line="start:15 0 0;end:-5 5 -10;color:red" scale="" position="-17.860 4.526 -14.137">
+                <a-ring select-view="ireland" color="red" radius-inner="2" radius-outer="4" rotation="9.50 43.478 160.442"
+                    position="-4.181 5.927 -5.536">
+                    <a-ring color="blue" radius-inner="0.01" radius-outer="2"></a-ring>
+                </a-ring>
+            </a-entity>
+
+        <a-entity id="ukEntity" line="start:15 0 0;end:-5 5 -10;color:red" scale="" position="-17.860 4.526 -14.137">
+                <a-ring select-view="uk" color="red" radius-inner="2" radius-outer="4" rotation="9.50 43.478 160.442"
+                    position="-4.181 5.927 -5.536">
+                    <a-ring color="blue" radius-inner="0.01" radius-outer="2"></a-ring>
+                </a-ring>
+            </a-entity>
+
+        <a-entity id="germanyEntity" line="start:15 0 0;end:-5 5 -10;color:red" scale="" position="-17.860 4.526 -14.137">
+            <a-ring select-view="germany" color="red" radius-inner="2" radius-outer="4" rotation="9.50 43.478 160.442"
+                position="-4.181 5.927 -5.536">
+                <a-ring color="blue" radius-inner="0.01" radius-outer="2"></a-ring>
+            </a-ring>
+        </a-entity>
+
+        <a-entity id="italyEntity" line="start:15 1 0;end:-5 0 5;color:red" scale="" position="-17.291 1.850 -14.227">
+            <a-ring select-view="italy" color="red" radius-inner="2" radius-outer="4" rotation="9.504 43.478 160.442"
+                position="-14.062 -3.107 -6.483">
+                <a-ring color="blue" radius-inner="0.01" radius-outer="2"></a-ring>
+            </a-ring>
+        </a-entity>
+
+        <a-entity line="start:15 1 0;end:30 0 5;color:red" scale="" position="-5.583 -3.1330053686247696 -18.42283423009991">
+            <a-ring select-view="india" color="red" radius-inner="2" radius-outer="4" rotation="0 -75.160 0" position="28.907 0.264 5.673">
+                <a-ring color="blue" radius-inner="0.01" radius-outer="2"></a-ring>
+            </a-ring>
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
+
+<!-- <a-entity line="start:15 1 0;end:-5 0 5;color:red" scale="" position="-17.291 1.850 -14.227">
+        <a-ring select-view="india" color="red" radius-inner="4" radius-outer="7" rotation="0 -75.160 0" position="-14.062 -3.107 -6.483">
+            <a-ring color="blue" radius-inner="0.01" radius-outer="4"></a-ring>
+        </a-ring>
+</a-entity> -->

@@ -21,6 +21,8 @@ module.exports = {
 		extensions: [".ts", ".js"]
 	},
 	devServer: {
+		// host: 'localhost',
+		// port: 80
 		// historyApiFallback: {
 		// 	rewrites: [
 		// 		{

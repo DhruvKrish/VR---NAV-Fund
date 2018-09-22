@@ -9,7 +9,7 @@
   ],
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack.config.js --mode development"
+    "start": "webpack-dev-server --config config/webpack.config.js --mode development --host 0.0.0.0"
   },
   "private": true,
   "dependencies": {

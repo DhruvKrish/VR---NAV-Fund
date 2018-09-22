@@ -1,4 +1,5 @@
 import * as AFRAME from "aframe";
+import * as THREE from "three";
 import { Cylindrical } from "three";
 
 console.log(AFRAME.version);
@@ -7,12 +8,143 @@ const totalFunds = 2480;
 const countryFunds = {
     france: 1200,
     germany: 600,
-    luxemborg: 500,
+    luxembourg: 500,
     italy: 140,
     uk: 30,
     ireland: 10,
     india: 1800,
 };
+
+const data = {
+    france: {
+        totalFunds: 1200,
+        processed: {
+            total: 750,
+            withinCutoff: 600,
+            afterCutoff: 150
+        },
+        wip: {
+            total: 250,
+            aboutToMissCutoff: 100,
+            wellWithinTime: 150
+        },
+        missedCutoff: {
+            total: 200
+        }
+    },
+    italy: {
+        totalFunds: 140,
+        processed: {
+            total: 95,
+            withinCutoff: 80,
+            afterCutoff: 15
+        },
+        wip: {
+            total: 30,
+            aboutToMissCutoff: 5,
+            wellWithinTime: 25
+        },
+        missedCutoff: {
+            total: 15
+        },
+    },
+    germany: {
+        totalFunds: 600,
+        processed: {
+            total: 350,
+            withinCutoff: 300,
+            afterCutoff: 50
+        },
+        wip: {
+            total: 200,
+            aboutToMissCutoff: 50,
+            wellWithinTime: 150
+        },
+        missedCutoff: {
+            total: 50
+        },
+    },
+    uk: {
+        totalFunds: 30,
+        processed: {
+            total: 15,
+            withinCutoff: 10,
+            afterCutoff: 5
+        },
+        wip: {
+            total: 10,
+            aboutToMissCutoff: 2,
+            wellWithinTime: 8
+        },
+        missedCutoff: {
+            total: 5
+        },
+    },
+    ireland: {
+        totalFunds: 10,
+        processed: {
+            total: 7,
+            withinCutoff: 5,
+            afterCutoff: 2
+        },
+        wip: {
+            total: 2,
+            aboutToMissCutoff: 1,
+            wellWithinTime: 1
+        },
+        missedCutoff: {
+            total: 1
+        },
+    },
+    global: {
+        totalFunds: 2480,
+        processed: {
+            total: 1467,
+            withinCutoff: 1195,
+            afterCutoff: 272
+        },
+        wip: {
+            total: 717,
+            aboutToMissCutoff: 183,
+            wellWithinTime: 534
+        },
+        missedCutoff: {
+            total: 296
+        }
+    },
+    luxembourg: {
+        totalFunds: 500,
+        processed: {
+            total: 250,
+            withinCutoff: 200,
+            afterCutoff: 50
+        },
+        wip: {
+            total: 225,
+            aboutToMissCutoff: 25,
+            wellWithinTime: 200
+        },
+        missedCutoff: {
+            total: 25
+        },
+    },
+    india: {
+        totalFunds: 1800,
+        processed: {
+            total: 1000,
+            withinCutoff: 800,
+            afterCutoff: 200
+        },
+        wip: {
+            total: 600,
+            aboutToMissCutoff: 100,
+            wellWithinTime: 500
+        },
+        missedCutoff: {
+            total: 200
+        },
+    },
+}
 
 AFRAME.registerComponent("show-funds", {
     schema: {default: ''},
@@ -36,3 +168,70 @@ AFRAME.registerComponent("show-funds", {
         });
     },
 });
+
+AFRAME.registerComponent("zooming", {
+    schema: { default: "" },
+    init() {
+        console.log(this.data);
+        this.el.addEventListener("click", () => {
+            const globe = document.querySelector("#globe");
+            const pos = globe.getAttribute("position");
+            // globe.setAttribute("position", {x: pos.x, y: pos.y, z: pos.z - 5});
+            globe.setAttribute("material", "opacity: 0.9");
+            const mapPlane = document.getElementById("mapPlane");
+
+            mapPlane.setAttribute("material", `src: #$franceMap;`);
+            mapPlane.setAttribute("visible", "true");
+        })
+    },
+});
+
+AFRAME.registerComponent("select-view", {
+    schema: { default: "" },
+    init() {
+       this.el.addEventListener("click", () => {
+
+        const globe = document.querySelector("#globe");
+        const pos = globe.getAttribute("position");
+        // globe.setAttribute("position", {x: pos.x, y: pos.y, z: pos.z - 5});
+        // globe.setAttribute("material", "opacity: 0.5");
+        if (this.data === "global") {
+            globe.setAttribute("material", "opacity: 1");
+            globe.emit("goingforwards")
+            // document.querySelector("#ocean").setAttribute("visible", "false");
+        } else {
+            // document.querySelector("#ocean").setAttribute("visible", "true");
+            globe.setAttribute("material", "opacity: 0.5");
+            globe.emit('goingbackwards');
+        }
+        const countryFocusPlane = document.getElementById("countryFocusPlane");
+        countryFocusPlane.setAttribute("material", `src: #${this.data}Map; transparent: true`);
+        countryFocusPlane.setAttribute("visible", "true");
+
+        const totalFundsProcessed = document.querySelector("#maincyl");
+        const fundsProcessedBeforeCutoff = document.querySelector("#maincyl-2");
+        const fundsProcessedAfterCutoff = document.querySelector("#maincyl-3");
+        const viewData = data[this.data];
+        console.log(this.data)
+        totalFundsProcessed.setAttribute("height", viewData["processed"].total / 1000);
+        fundsProcessedBeforeCutoff.setAttribute("height", viewData["processed"].withinCutoff / 1000);
+        fundsProcessedAfterCutoff.setAttribute("height", viewData["processed"].afterCutoff / 1000);
+       }) 
+    }
+})
+
+AFRAME.registerComponent("swap-plane", {
+    schema: { default: "" },
+    init() {
+        this.el.addEventListener("click", () => {
+            console.log(this.data);
+            const first = document.querySelector("#first");
+            first.emit("swap");
+        })
+    }
+})
+
+// var cameraEl = document.querySelector('#camera');
+// var worldPos = new THREE.Vector3();
+// worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+// console.log(worldPos.x);
