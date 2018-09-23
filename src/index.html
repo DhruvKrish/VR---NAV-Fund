@@ -29,11 +29,11 @@
             <img id="finland" src="./assets/finland.jpg">
             <img id="pia" src="./assets/PIA12348_hires.jpg">
             <img id="germanyTest" src="./assets/germanyTest.jpg">
-            
+
         </a-assets>
 
-        <a-camera id="camera" position="0.6 1 20" fov="80">
-            <a-cursor color="#4CC3D9" fuse="true" fuse-timeout="5000"></a-cursor>
+        <a-camera id="camera" position="0.6 1 20">
+            <a-cursor color="#4CC3D9" fuse="true" fuse-timeout="1000"></a-cursor>
         </a-camera>
         <!-- <a-entity light="type: directional; color: white; intensity: 0.6" position="0 0 1"></a-entity>
         <a-entity light="type: ambient; color: #CCC; intensity: 0.6"></a-entity> -->
@@ -60,9 +60,9 @@
             transparent="true">
         </a-plane> -->
 
-        <!-- <a-sky material="src: #pia" ></a-sky>
+        <a-sky material="src: #pia"></a-sky>
         <a-ocean id="ocean" width="100" depth="100" density="150" opacity="0.1" position="0 -1 0" visible="false"></a-ocean>
-        <a-sphere id="globe" rotation="-18.867 -105.984 -32.467" radius="15" material="src: #globalMap" position="0 0 -30">
+        <!-- <a-sphere id="globe" rotation="-18.867 -105.984 -32.467" radius="15" material="src: #globalMap" position="0 0 -30">
                 <a-animation
                 attribute="position"
                 dur="1000"
@@ -99,13 +99,133 @@
                 <a-ring select-view="india" color="teal" radius-inner="2" radius-outer="3"></a-ring>
 
             </a-cylinder>
+        </a-sphere> -->
+        <a-sphere select-view="global" id="globe" rotation="-0.937 -97.3502788920865 -29.030" radius="15" material="src: #globalMap"
+            position="0 -20 -60" geometry="" scale="2.5 1 3">
+            <a-animation attribute="position" dur="1000" fill="forwards" to="-5 -5 -50" begin="goingbackwards"></a-animation>
+            <a-animation attribute="scale" dur="1000" to="2 2 2" easing="ease" begin="goingbackwards"></a-animation>
+            <a-animation attribute="position" dur="1000" fill="forwards" to="0 0 -30" begin="goingforwards"></a-animation>
+            <!-- <a-cylinder id="franceSelector" color="crimson" radius="0.2" position="10.161901598657424 10.188288722069702 0.9833758879297012" material="" geometry="height:10" select-view="france" rotation="-2 -6.000000000000001 5"></a-cylinder> <a-cylinder id="irelandSelector" color="crimson" radius="0.2" position="8.717710538653353 11.995542652476495 2.6601039677365" material="" geometry="height:10" select-view="ireland"></a-cylinder> <a-cylinder id="ukSelector" color="crimson" radius="0.2" position="9.094360569329625 11 1.8269029318489673" material="" geometry="height:10" select-view="uk"></a-cylinder> <a-cylinder id="germanySelector" color="crimson" radius="0.2" position="9.360051832117442 10.559639235487014 0.04622105564678604" material="" geometry="height:10" select-view="germany"></a-cylinder> <a-cylinder id="italySelector" color="crimson" radius="0.2" position="10.896546816424456 10.03576544682047 -0.3192756354326113" material="" geometry="height:10" select-view="italy"></a-cylinder> <a-cylinder id="indiaSelector" color="crimson" radius="0.2" position="6.249140661997774 7.908579912456541 -12.51246029566455" material="" geometry="height:10" rotation="10.114309410604069 9.060653811831703 -10.452103193108652" select-view="india"> <a-ring select-view="india" color="teal" radius-inner="2" radius-outer="3" material="" geometry=""></a-ring> </a-cylinder> -->
         </a-sphere>
 
-        
-        <a-plane id="countryFocusPlane" material="transparent: true" rotation="-32 0 0" width="25.6" height="23.54" scale="0.8 0.8 0.8" position="-0.64 -3.058 -10" visible="false" >
+        <a-plane id="countryFocusPlane" material="transparent: true" rotation="-32 0 0" width="25.6" height="23.54"
+            scale="0.8 0.8 0.8" position="-0.64 -3.058 -10" visible="false">
         </a-plane>
-        
-        <a-cylinder id="maincyl" position="3.885 11.619 -9.718" radius="0.5" height="2.48" color="#FFC65D" shadow=""
+
+        <!-- <a-entity position="-28.315 10.607 -2.851">
+                <a-cylinder id="maincyl" position="3.885 11.619 -9.718" radius="0.5" height="2.48" color="#FFC65D" shadow=""
+                material="color:#00f900" geometry="" scale="1.79 1.846 4.048"></a-cylinder>
+    
+            <a-cylinder id="maincyl-2" position="1.895 11.6 -6" radius="0.5" height="2.48" color="#FFC65D" shadow=""
+                material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661"></a-cylinder>
+    
+            <a-cylinder id="maincyl-3" position="6.024 11.318 -9.146" radius="0.5" height="2.48" color="#FFC65D" shadow=""
+                material="color:#ff9300" geometry="" scale="1.79 1.846 4.048"></a-cylinder>
+            
+            <a-plane select-view="global" color="red" position="-15.648 11.453 -9.166" material="src: #cross" transparent="true" geometry="" scale="1.995 1.995 1.995"></a-plane>
+    
+            <a-plane id="franceMapPlane" material="src: #germanyTest" transparent="true" rotation="-32 0 0" width="25.6" height="23.54"
+                scale="0.8 0.8 0.8" position="-0.64 -3.058 -10" visible="false" geometry="">
+            </a-plane>
+    
+            
+            <a-box position="-12.888 9.93 -9.349" depth="0.5" height="0.5" width="0.5" material="color:#00f900" geometry=""></a-box>
+    
+            <a-text position="-11.775 9.911 -9.298" scale="3.7 3.7 3.7" text="value:Total funds processed;color:#00fdff"></a-text>
+    
+            <a-box position="-12.767 11.383 -9.209" depth="0.5" height="0.5" width="0.5" material="color:#116810" geometry=""
+                visible=""></a-box>
+    
+            <a-box position="-12.563 12.968 -8.757" depth="0.5" height="0.5" width="0.5" material="color:#ff9300" geometry=""
+                visible=""></a-box>
+    
+            <a-text position="-11.707 11.331 -9.275" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed within cutoff"></a-text>
+    
+            <a-text position="-11.492 12.719 -8.975" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed after cutoff"></a-text>
+        </a-entity> -->
+        <a-entity position="-51.673 1.653175530783658 -54.93353271932309" scale="2 2 2">
+            <!-- <a-entity scale="1 2 1" position="0 -16 0">
+                <a-cylinder id="maincyl" position="20.18370845329921 11.619 -9.718" radius="1" height="2.48" color="#FFC65D"
+                    shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048" opacity="0.7" rotation="26.036 0 0"></a-cylinder>
+
+                <a-cylinder id="maincyl-2" position="14.79494149413459 10.121918367760577 -6" radius="1" height="2.48"
+                    color="#FFC65D" shadow="" material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661" opacity="0.7" rotation="26.036 0 0"></a-cylinder>
+
+                <a-cylinder id="maincyl-3" position="27.183288450055464 11.67616550387604 -9.146" radius="1" height="2.48"
+                    color="#FFC65D" shadow="" material="color:#ff9300" geometry="" scale="1.79 1.846 4.048" opacity="0.7" rotation="26.036 0 0"></a-cylinder>
+            </a-entity> -->
+
+            <a-entity scale="1 2 1" position="0 -20.5045161697226 9.243759118751031">
+                <a-cylinder id="maincyl" position="13.051643432076844 10.409453249014256 -9.718" radius="0.5" height="2.48"
+                    color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048" opacity="0.85"
+                    rotation="10 0 0"></a-cylinder>
+
+                <a-cylinder id="maincyl-2" position="11.251673989031055 8.551980265940577 -6.8479819912816735" radius="0.5"
+                    height="2.48" color="#FFC65D" shadow="" material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661"
+                    opacity="0.85" rotation="10 0 0"></a-cylinder>
+
+                <a-cylinder id="maincyl-3" position="16.34934597664307 9.73373668668334 -9.338372092734904" radius="0.5"
+                    height="2.48" color="#FFC65D" shadow="" material="color:#ff9300" geometry="" scale="1.79 1.846 4.048"
+                    opacity="0.85" rotation="10 0 0"></a-cylinder>
+            </a-entity>
+
+            <a-entity scale="1 2 1" position="14.237213066097114 -22.439340701451734 10.286429526034176">
+                <a-cylinder id="maincyl" position="24.30478908217183 11.905849848426396 -9.718" radius="0.5" height="2.48"
+                    color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048" opacity="0.85"
+                    rotation="10 0 0"></a-cylinder>
+
+                <a-cylinder id="maincyl-2" position="21.387298479699552 10.867872983315282 -9.951949076143212" radius="0.5"
+                    height="2.48" color="#FFC65D" shadow="" material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661"
+                    opacity="0.85" rotation="10 0 0"></a-cylinder>
+
+                <a-cylinder id="maincyl-3" position="27.320876748585114 10.714416713806216 -9.338372092734904" radius="0.5"
+                    height="2.48" color="#FFC65D" shadow="" material="color:#ff9300" geometry="" scale="1.79 1.846 4.048"
+                    opacity="0.85" rotation="10 0 0"></a-cylinder>
+            </a-entity>
+
+            <a-entity scale="1 2 1" position="12.655622540405858 -17.19439006634812 9.243759118751031">
+                <a-cylinder id="maincyl" position="13.051643432076844 10.409453249014256 -9.718" radius="0.5" height="2.48"
+                    color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048" opacity="0.85"
+                    rotation="10 0 0"></a-cylinder>
+            </a-entity>
+
+            <a-entity position="0 -29.288 0">
+                <a-plane select-view="global" color="red" position="-44.25821416881983 67.41215543263482 -48.377421518056366"
+                    material="src:#cross" transparent="true" geometry="" scale="10 10 10" rotation="0 45 0"></a-plane>
+
+
+                <a-entity scale="10 10 10" position="-54.21072159448331 -15.764128487619736 -24.90137610603992"
+                    rotation="0 45 0">
+                    <a-box position="-12.888 9.93 -9.349" depth="0.5" height="0.5" width="0.5" material="color:#00f900"
+                        geometry=""></a-box>
+                    <a-box position="-12.767 11.383 -9.209" depth="0.5" height="0.5" width="0.5" material="color:#116810"
+                        geometry="" visible=""></a-box>
+                    <a-box position="-12.563 12.968 -8.757" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                        geometry="" visible=""></a-box>
+                </a-entity>
+
+                <a-entity scale="10 10 10" position="-51.056 -18.5 -20" rotation="0 45 0">
+                    <a-text position="-11.702594986094955 9.911 -9.298" scale="3.7 3.7 3.7" text="value:Total funds processed;color:#00fdff"></a-text>
+                    <a-text position="-11.707 11.331 -9.275" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed within cutoff"></a-text>
+                    <a-text position="-11.492 12.719 -8.975" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed after cutoff"></a-text>
+                </a-entity>
+            </a-entity>
+
+        </a-entity>
+
+        <a-entity select-view="france"  zooming id="franceEntity" scale="6.212 6.212 4.66204094801245" position="6.173254682543526 -12.01072511136552 -33.37315365311829">
+            <a-ring select-view="france" color="white" transparent="false" radius-inner="0.1" radius-outer="4" rotation="9.5 43.478 160.442"
+                position="-2.162950879087001 -1.1298051588090416 0.4296067128626415" material="side:double" geometry="radiusInner:0.5;radiusOuter:1">
+                <!-- <a-ring color="red" radius-inner="0.01" radius-outer="2" material="" geometry="radiusOuter:0.5"></a-ring> -->
+            </a-ring>
+        </a-entity>
+
+        <a-box select-view="france" width="5" height="5" position="10 10 10"></a-box>
+
+        <a-plane select-view="france" color="red" position="31.374216091352462 3.8291311542267588 17.739313708201305" transparent="true"
+            geometry="height:5;width:5" scale="5 5 5" material="" rotation="0 -90 0"></a-plane>
+
+        <!-- <a-cylinder id="maincyl" position="3.885 11.619 -9.718" radius="0.5" height="2.48" color="#FFC65D" shadow=""
             material="color:#00f900" geometry="" scale="1.79 1.846 4.048"></a-cylinder>
 
         <a-cylinder id="maincyl-2" position="1.895 11.6 -6" radius="0.5" height="2.48" color="#FFC65D" shadow=""
@@ -135,13 +255,13 @@
 
         <a-text position="-11.492 12.719 -8.975" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed after cutoff"></a-text> -->
 
-        <a-plane id="first" position="-2 11 -15" material="side: double; color: red; transparent: true; opacity: 1" width="60" height="25" swap-plane="first">
+        <!-- <a-plane id="first" position="-2 11 -15" material="side: double; color: red; transparent: true; opacity: 1" width="60" height="25" swap-plane="first">
             <a-animation begin="swap" attribute="position" dur="5000" to="-2 9 -20"></a-animation>
         </a-plane>
 
         <a-plane id="second" position="-2 9 -20" material="side: double; color: blue; transparent: true; opacity: 1" width="50" height="20" swap-plane="second">
                 <a-animation begin="swap" attribute="position" dur="5000" to="-2 11 -15"></a-animation>
-        </a-plane>
+        </a-plane> -->
 
     </a-scene>
 

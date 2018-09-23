@@ -189,13 +189,14 @@ AFRAME.registerComponent("zooming", {
 AFRAME.registerComponent("select-view", {
     schema: { default: "" },
     init() {
+       
        this.el.addEventListener("click", () => {
-
+        console.log("working")
         const globe = document.querySelector("#globe");
         const pos = globe.getAttribute("position");
         // globe.setAttribute("position", {x: pos.x, y: pos.y, z: pos.z - 5});
         // globe.setAttribute("material", "opacity: 0.5");
-        if (this.data === "global") {
+        if (this.data == "global") {
             globe.setAttribute("material", "opacity: 1");
             globe.emit("goingforwards")
             // document.querySelector("#ocean").setAttribute("visible", "false");
@@ -206,7 +207,7 @@ AFRAME.registerComponent("select-view", {
         }
         const countryFocusPlane = document.getElementById("countryFocusPlane");
         countryFocusPlane.setAttribute("material", `src: #${this.data}Map; transparent: true`);
-        countryFocusPlane.setAttribute("visible", "true");
+        // countryFocusPlane.setAttribute("visible", "true");
 
         const totalFundsProcessed = document.querySelector("#maincyl");
         const fundsProcessedBeforeCutoff = document.querySelector("#maincyl-2");
