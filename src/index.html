@@ -222,8 +222,7 @@
 
         <a-box select-view="france" width="5" height="5" position="10 10 10"></a-box>
 
-        <a-plane select-view="france" color="red" position="31.374216091352462 3.8291311542267588 17.739313708201305" transparent="true"
-            geometry="height:5;width:5" scale="5 5 5" material="" rotation="0 -90 0"></a-plane>
+        
 
         <!-- <a-cylinder id="maincyl" position="3.885 11.619 -9.718" radius="0.5" height="2.48" color="#FFC65D" shadow=""
             material="color:#00f900" geometry="" scale="1.79 1.846 4.048"></a-cylinder>
@@ -262,6 +261,66 @@
         <a-plane id="second" position="-2 9 -20" material="side: double; color: blue; transparent: true; opacity: 1" width="50" height="20" swap-plane="second">
                 <a-animation begin="swap" attribute="position" dur="5000" to="-2 11 -15"></a-animation>
         </a-plane> -->
+
+
+        <a-entity>
+            <a-plane id='first_p' position="31.374216091352462 3.8291311542267588 19.739313708201305" rotation="0 -90 0" 
+            geometry="primitive:plane;height:5;width:5" scale="5 5 5" swap-teams="first"
+            material='side:double; color:green; transparent:false;opacity:1'>
+                <a-animation begin='four' attribute='position' begin="2000" 
+                to="31.374216091352462 7.8291311542267588 13.739313708201305" dur='2000'/>
+                <a-animation begin='three' attribute='position' begin="2000" 
+                to="31.374216091352462 7.8291311542267588 15.739313708201305" dur='10000'/>
+                <a-animation begin='two' attribute='position' begin="2000" 
+                to="31.374216091352462 5.8291311542267588 17.739313708201305" dur='10000'/>
+                <a-animation begin='one' attribute='position' begin="2000" 
+                to="31.374216091352462 3.8291311542267588 19.739313708201305" dur='10000'/>            </a-plane>
+        </a-entity>
+
+        <a-entity>
+            <a-plane id='second_p' position="31.374216091352462 5.8291311542267588 17.739313708201305" rotation="0 -90 0" 
+            geometry="primitive:plane;height:5;width:5" scale="5 5 5" swap-teams="second"
+            material='side:double; color:#ef2d5e; transparent:false;opacity:1'>
+                <a-animation begin='four' attribute='position' begin="2000" 
+                to="31.374216091352462 7.8291311542267588 13.739313708201305" dur='2000'/>
+                <a-animation begin='three' attribute='position' begin="2000" 
+                to="31.374216091352462 7.8291311542267588 15.739313708201305" dur='10000'/>
+                <a-animation begin='two' attribute='position' begin="2000" 
+                to="31.374216091352462 5.8291311542267588 17.739313708201305" dur='10000'/>
+                <a-animation begin='one' attribute='position' begin="2000" 
+                to="31.374216091352462 3.8291311542267588 19.739313708201305" dur='10000'/>
+            </a-plane>
+        </a-entity>
+
+        <a-entity>
+            <a-plane id='third_p' position="31.374216091352462 7.8291311542267588 15.739313708201305" rotation="0 -90 0" 
+            geometry="primitive:plane;height:5;width:5" scale="5 5 5" swap-teams="third"
+            material='side:double; color:blue; transparent:false;opacity:1'>
+                <a-animation begin='four' attribute='position' begin="2000" 
+                to="31.374216091352462 7.8291311542267588 13.739313708201305" dur='2000'/>
+                <a-animation begin='three' attribute='position' begin="2000" 
+                to="31.374216091352462 7.8291311542267588 15.739313708201305" dur='10000'/>
+                <a-animation begin='two' attribute='position' begin="2000" 
+                to="31.374216091352462 5.8291311542267588 17.739313708201305" dur='10000'/>
+                <a-animation begin='one' attribute='position' begin="2000" 
+                to="31.374216091352462 3.8291311542267588 19.739313708201305" dur='10000'/>
+            </a-plane>
+        </a-entity>
+
+        <a-entity>
+            <a-plane id='fourth_p' position="31.374216091352462 7.8291311542267588 13.739313708201305" rotation="0 -90 0" 
+            geometry="primitive:plane;height:5;width:5" scale="5 5 5" swap-teams="fourth"
+            material='side:double; color:yellow; transparent:false;opacity:1'>
+                <a-animation begin='four' attribute='position' begin="2000" 
+                to="31.374216091352462 7.8291311542267588 13.739313708201305" dur='2000'/>
+                <a-animation begin='three' attribute='position' begin="2000" 
+                to="31.374216091352462 7.8291311542267588 15.739313708201305" dur='10000'/>
+                <a-animation begin='two' attribute='position' begin="2000" 
+                to="31.374216091352462 5.8291311542267588 17.739313708201305" dur='10000'/>
+                <a-animation begin='one' attribute='position' begin="2000" 
+                to="31.374216091352462 3.8291311542267588 19.739313708201305" dur='10000'/>
+            </a-plane>
+        </a-entity>
 
     </a-scene>
 
