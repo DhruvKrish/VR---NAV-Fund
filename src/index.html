@@ -12,7 +12,7 @@
 
 <body>
     <div id="container"></div>
-    <a-scene>
+    <a-scene global-view>
         <a-assets>
             <img id="franceMap" src="./assets/france3dMap.png">
             <img id="germanyMap" src="./assets/germany3dMap.png">
@@ -29,12 +29,21 @@
             <img id="finland" src="./assets/finland.jpg">
             <img id="pia" src="./assets/PIA12348_hires.jpg">
             <img id="germanyTest" src="./assets/germanyTest.jpg">
-
+            <audio id="click-sound" src="./assets/click.mp3"></audio>
+            <audio id="click-sound-2" src="./assets/Sound Effects Button.mp3"></audio>
         </a-assets>
 
         <a-camera id="camera" position="0.6 1 20">
-            <a-cursor color="#4CC3D9" fuse="true" fuse-timeout="1000"></a-cursor>
+            <a-cursor raycaster="objects: .clickable" color="black" fuse="true" fuse-timeout="1000" sound="src: #click-sound-2; volume:1; on: click;">
+                <a-animation begin="click" easing="ease-in" attribute="scale" dur="150" fill="forwards" from="0.1 0.1 0.1"
+                    to="1 1 1"></a-animation>
+                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500" fill="backwards" from="1 1 1"
+                    to="0.1 0.1 0.1"></a-animation>
+                <!-- <a-sound src="#click-sound" volume="5" on="click" autoplay="true"></a-sound> -->
+            </a-cursor>
         </a-camera>
+
+
         <!-- <a-entity light="type: directional; color: white; intensity: 0.6" position="0 0 1"></a-entity>
         <a-entity light="type: ambient; color: #CCC; intensity: 0.6"></a-entity> -->
 
@@ -100,16 +109,47 @@
 
             </a-cylinder>
         </a-sphere> -->
-        <a-sphere select-view="global" id="globe" rotation="-0.937 -97.3502788920865 -29.030" radius="15" material="src: #globalMap"
+
+        <a-text id="heading" position="-21.492985896822237 32.53 -50" scale="30 30 20" text="width:6;value:Global view;color:#fffb00"></a-text>
+
+        <a-sphere id="globe" rotation="-0.937 -97.3502788920865 -29.030" radius="15" material="src: #globalMap"
             position="0 -20 -60" geometry="" scale="2.5 1 3">
             <a-animation attribute="position" dur="1000" fill="forwards" to="-5 -5 -50" begin="goingbackwards"></a-animation>
             <a-animation attribute="scale" dur="1000" to="2 2 2" easing="ease" begin="goingbackwards"></a-animation>
             <a-animation attribute="position" dur="1000" fill="forwards" to="0 0 -30" begin="goingforwards"></a-animation>
+            <a-animation attribute="material.opacity" dur="1000" to="0.5" begin="country-map-appearing"></a-animation>
             <!-- <a-cylinder id="franceSelector" color="crimson" radius="0.2" position="10.161901598657424 10.188288722069702 0.9833758879297012" material="" geometry="height:10" select-view="france" rotation="-2 -6.000000000000001 5"></a-cylinder> <a-cylinder id="irelandSelector" color="crimson" radius="0.2" position="8.717710538653353 11.995542652476495 2.6601039677365" material="" geometry="height:10" select-view="ireland"></a-cylinder> <a-cylinder id="ukSelector" color="crimson" radius="0.2" position="9.094360569329625 11 1.8269029318489673" material="" geometry="height:10" select-view="uk"></a-cylinder> <a-cylinder id="germanySelector" color="crimson" radius="0.2" position="9.360051832117442 10.559639235487014 0.04622105564678604" material="" geometry="height:10" select-view="germany"></a-cylinder> <a-cylinder id="italySelector" color="crimson" radius="0.2" position="10.896546816424456 10.03576544682047 -0.3192756354326113" material="" geometry="height:10" select-view="italy"></a-cylinder> <a-cylinder id="indiaSelector" color="crimson" radius="0.2" position="6.249140661997774 7.908579912456541 -12.51246029566455" material="" geometry="height:10" rotation="10.114309410604069 9.060653811831703 -10.452103193108652" select-view="india"> <a-ring select-view="india" color="teal" radius-inner="2" radius-outer="3" material="" geometry=""></a-ring> </a-cylinder> -->
+
+            <a-ring id="france" class="clickable" select-view="france" color="teal" radius-inner="1" radius-outer="2"
+                material="" geometry="radiusInner:0.1;radiusOuter:0.5" position="13.714358742672191 23.89885884660441 0.47421192530338363"
+                scale="" rotation="-35 44 0"></a-ring>
+            <a-ring id="uk" class="clickable" select-view="uk" color="teal" radius-inner="1" radius-outer="2" material=""
+                geometry="radiusInner:0.1;radiusOuter:0.5" position="12.086890523348188 26.86816982949172 0.6684394028434623"
+                scale="" rotation="-35 44 0"></a-ring>
+            <a-ring id="ireland" class="clickable" select-view="ireland" color="teal" radius-inner="1" radius-outer="2"
+                material="" geometry="radiusInner:0.1;radiusOuter:0.5" position="12.528543522141495 26.286533361289695 1.4623444066507394"
+                scale="" rotation="-35 44 0"></a-ring>
+            <a-ring id="germany" class="clickable" select-view="germany" color="teal" radius-inner="1" radius-outer="2"
+                material="" geometry="radiusInner:0.1;radiusOuter:0.5" position="12.717957406776728 25.33756810391868 -0.8391419192296745"
+                scale="" rotation="-35 44 0"></a-ring>
+            <a-ring id="italy" class="clickable" select-view="italy" color="teal" radius-inner="1" radius-outer="2"
+                material="" geometry="radiusInner:0.1;radiusOuter:0.5" position="14.627239737542777 21.809580431298194 -1.2351011707608717"
+                scale="" rotation="-35 44 0"></a-ring>
+            <!-- <a-ring id="luxembourg" class="clickable" select-view="france" color="teal" radius-inner="1" radius-outer="2"
+                material="" geometry="radiusInner:0.1;radiusOuter:1" position="13.714358742672191 23.89885884660441 0.47421192530338363"
+                scale="" rotation="-35 44 0"></a-ring> -->
+            <a-ring id="india" class="clickable" select-view="india" color="teal" radius-inner="1" radius-outer="2"
+                material="" geometry="radiusInner:0.1;radiusOuter:0.5" position="11.428218419967815 25.191452014216594 -8.831284656630043"
+                scale="" rotation="-35 44 0"></a-ring>
+
+            <a-plane class="clickable" select-view="global" color="red" position="11.669461003793828 55.05060853144981 2.307708729441608"
+                geometry="" scale="2 2 2" rotation="-28.08614067661469 47.26071978463182 92.36096198131997" material="src:#cross;transparent:true"></a-plane>
+
         </a-sphere>
 
-        <a-plane id="countryFocusPlane" material="transparent: true" rotation="-32 0 0" width="25.6" height="23.54"
-            scale="0.8 0.8 0.8" position="-0.64 -3.058 -10" visible="false">
+        <a-plane id="countryFocusPlane" material="transparent:true;" rotation="" width="25.6" height="23.54" scale="0.5 0.5 0.5"
+            position="-0.64 -30.405 -20" visible="false" geometry="width:20;height:20">
+            <a-animation attribute="scale" dur="1000" to="0.8 0.8 0.8" easing="ease" begin="country-map-appearing"></a-animation>
         </a-plane>
 
         <!-- <a-entity position="-28.315 10.607 -2.851">
@@ -156,42 +196,69 @@
             </a-entity> -->
 
             <a-entity scale="1 2 1" position="0 -20.5045161697226 9.243759118751031">
-                <a-cylinder id="maincyl" position="13.051643432076844 10.409453249014256 -9.718" radius="0.5" height="2.48"
-                    color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048" opacity="0.85"
-                    rotation="10 0 0"></a-cylinder>
+                <a-cylinder id="total-processed" position="13.051643432076844 10.409453249014256 -9.718" radius="0.5"
+                    height="2.48" color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048"
+                    opacity="0.85" rotation="10 0 0">
+                    <a-text id="total-processed-value" position="0 2.145 0" value="1467" color="#942192" text="color:#fffb00"
+                        scale="2 2 3"></a-text>
+                </a-cylinder>
 
-                <a-cylinder id="maincyl-2" position="11.251673989031055 8.551980265940577 -6.8479819912816735" radius="0.5"
-                    height="2.48" color="#FFC65D" shadow="" material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661"
-                    opacity="0.85" rotation="10 0 0"></a-cylinder>
+                <a-cylinder id="processed-before-cutoff" position="11.251673989031055 8.551980265940577 -6.8479819912816735"
+                    radius="0.5" height="2.48" color="#FFC65D" shadow="" material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661"
+                    opacity="0.85" rotation="10 0 0">
+                    <a-text id="processed-before-cutoff-value" position="0 2.145 0" value="1467" color="#942192" text="color:#fffb00"
+                        scale="2 2 3"></a-text>
+                </a-cylinder>
 
-                <a-cylinder id="maincyl-3" position="16.34934597664307 9.73373668668334 -9.338372092734904" radius="0.5"
-                    height="2.48" color="#FFC65D" shadow="" material="color:#ff9300" geometry="" scale="1.79 1.846 4.048"
-                    opacity="0.85" rotation="10 0 0"></a-cylinder>
+                <a-cylinder id="processed-after-cutoff" position="16.34934597664307 9.73373668668334 -9.338372092734904"
+                    radius="0.5" height="2.48" color="#FFC65D" shadow="" material="color:#ff9300" geometry="" scale="1.79 1.846 4.048"
+                    opacity="0.85" rotation="10 0 0">
+                    <a-text id="processed-after-cutoff-value" position="0 2.145 0" value="1467" color="#942192" text="color:#fffb00"
+                        scale="2 2 3"></a-text>
+                </a-cylinder>
+
+                <a-text position="13.427710517528261 7.241624749459701 0" scale="3 3 3" text="width:6;value:Funds processed;color:#942192"></a-text>
             </a-entity>
 
             <a-entity scale="1 2 1" position="14.237213066097114 -22.439340701451734 10.286429526034176">
-                <a-cylinder id="maincyl" position="24.30478908217183 11.905849848426396 -9.718" radius="0.5" height="2.48"
+                <a-cylinder id="total-wip" position="24.30478908217183 11.905849848426396 -9.718" radius="0.5" height="2.48"
                     color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048" opacity="0.85"
-                    rotation="10 0 0"></a-cylinder>
+                    rotation="10 0 0">
+                    <a-text id="total-wip-value" position="0 2.145 0" value="1467" color="#942192" text="color:#fffb00"
+                        scale="2 2 3"></a-text>
+                </a-cylinder>
 
-                <a-cylinder id="maincyl-2" position="21.387298479699552 10.867872983315282 -9.951949076143212" radius="0.5"
-                    height="2.48" color="#FFC65D" shadow="" material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661"
-                    opacity="0.85" rotation="10 0 0"></a-cylinder>
+                <a-cylinder id="wip-well-within-cutoff" position="21.387298479699552 10.867872983315282 -9.951949076143212"
+                    radius="0.5" height="2.48" color="#FFC65D" shadow="" material="color:#116810" geometry="" scale="1.619 0.8758259878851522 3.661"
+                    opacity="0.85" rotation="10 0 0">
+                    <a-text id="wip-well-within-cutoff-value" position="0 2.145 0" value="1467" color="#942192" text="color:#fffb00"
+                        scale="2 2 3"></a-text>
+                </a-cylinder>
 
-                <a-cylinder id="maincyl-3" position="27.320876748585114 10.714416713806216 -9.338372092734904" radius="0.5"
-                    height="2.48" color="#FFC65D" shadow="" material="color:#ff9300" geometry="" scale="1.79 1.846 4.048"
-                    opacity="0.85" rotation="10 0 0"></a-cylinder>
+                <a-cylinder id="wip-about-to-miss-cutoff" position="27.320876748585114 10.714416713806216 -9.338372092734904"
+                    radius="0.5" height="2.48" color="#FFC65D" shadow="" material="color:#ff9300" geometry="" scale="1.79 1.846 4.048"
+                    opacity="0.85" rotation="10 0 0">
+                    <a-text id="wip-about-to-miss-cutoff-value" position="0 2.145 0" value="1467" color="#942192" text="color:#fffb00"
+                        scale="2 2 3"></a-text>
+                </a-cylinder>
+
+                <a-text position="18.317993687516115 8.607960517221565 0" scale="3 3 3" text="width:6;value:Work in progress;color:#942192"></a-text>
             </a-entity>
 
             <a-entity scale="1 2 1" position="12.655622540405858 -17.19439006634812 9.243759118751031">
-                <a-cylinder id="maincyl" position="13.051643432076844 10.409453249014256 -9.718" radius="0.5" height="2.48"
-                    color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048" opacity="0.85"
-                    rotation="10 0 0"></a-cylinder>
+                <a-cylinder id="total-missed" position="13.051643432076844 10.409453249014256 -9.718" radius="0.5"
+                    height="2.48" color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="1.79 1.846 4.048"
+                    opacity="0.85" rotation="10 0 0">
+                    <a-text id="total-missed-value" position="0 2.145 0" value="1467" color="#942192" text="color:#fffb00"
+                        scale="2 2 3"></a-text>
+                </a-cylinder>
+
+                <a-text position="11.398491202740178 7.412131365436734 0" scale="3 3 3" text="width:6;value:Missed cutoff;color:#942192"></a-text>
             </a-entity>
 
             <a-entity position="0 -29.288 0">
-                <a-plane select-view="global" color="red" position="-44.25821416881983 67.41215543263482 -48.377421518056366"
-                    material="src:#cross" transparent="true" geometry="" scale="10 10 10" rotation="0 45 0"></a-plane>
+                <!-- <a-plane select-view="global" color="red" position="-44.25821416881983 67.41215543263482 -48.377421518056366"
+                      geometry="" scale="10 10 10" rotation="0 45 0"></a-plane> -->
 
 
                 <a-entity scale="10 10 10" position="-54.21072159448331 -15.764128487619736 -24.90137610603992"
@@ -202,29 +269,41 @@
                         geometry="" visible=""></a-box>
                     <a-box position="-12.563 12.968 -8.757" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
                         geometry="" visible=""></a-box>
+                    <a-box position="-12.563 8 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                        geometry="" visible=""></a-box>
+                    <a-box position="-12.563 6 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                        geometry="" visible=""></a-box>
+                    <a-box position="-12.563 4 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                        geometry="" visible=""></a-box>
+                    <a-box position="-12.563 2 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                        geometry="" visible=""></a-box>
                 </a-entity>
 
                 <a-entity scale="10 10 10" position="-51.056 -18.5 -20" rotation="0 45 0">
                     <a-text position="-11.702594986094955 9.911 -9.298" scale="3.7 3.7 3.7" text="value:Total funds processed;color:#00fdff"></a-text>
-                    <a-text position="-11.707 11.331 -9.275" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed within cutoff"></a-text>
-                    <a-text position="-11.492 12.719 -8.975" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of fund processed after cutoff"></a-text>
+                    <a-text position="-11.707 11.331 -9.275" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of funds processed within cutoff"></a-text>
+                    <a-text position="-11.492 12.719 -8.975" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of funds processed after cutoff"></a-text>
+                    <a-text position="-11.492 8 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:Total - Missed Cutoff"></a-text>
+                    <a-text position="-11.492 6 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:Total WIP"></a-text>
+                    <a-text position="-11.492 4 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:About to miss cutoff"></a-text>
+                    <a-text position="-11.492 2 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:Well within time"></a-text>
                 </a-entity>
             </a-entity>
 
         </a-entity>
 
-        <a-entity select-view="france"  zooming id="franceEntity" scale="6.212 6.212 4.66204094801245" position="6.173254682543526 -12.01072511136552 -33.37315365311829">
+        <!-- <a-entity select-view="france"  zooming id="franceEntity" scale="6.212 6.212 4.66204094801245" position="6.173254682543526 -12.01072511136552 -33.37315365311829">
             <a-ring select-view="france" color="white" transparent="false" radius-inner="0.1" radius-outer="4" rotation="9.5 43.478 160.442"
                 position="-2.162950879087001 -1.1298051588090416 0.4296067128626415" material="side:double" geometry="radiusInner:0.5;radiusOuter:1">
-                <!-- <a-ring color="red" radius-inner="0.01" radius-outer="2" material="" geometry="radiusOuter:0.5"></a-ring> -->
+                <a-ring color="red" radius-inner="0.01" radius-outer="2" material="" geometry="radiusOuter:0.5"></a-ring>
             </a-ring>
-        </a-entity>
+        </a-entity> -->
 
-        <a-box select-view="france" width="5" height="5" position="10 10 10"></a-box>
+        <!-- <a-box select-view="france" width="5" height="5" position="10 10 10"></a-box>
 
         
 
-        <!-- <a-cylinder id="maincyl" position="3.885 11.619 -9.718" radius="0.5" height="2.48" color="#FFC65D" shadow=""
+        <a-cylinder id="maincyl" position="3.885 11.619 -9.718" radius="0.5" height="2.48" color="#FFC65D" shadow=""
             material="color:#00f900" geometry="" scale="1.79 1.846 4.048"></a-cylinder>
 
         <a-cylinder id="maincyl-2" position="1.895 11.6 -6" radius="0.5" height="2.48" color="#FFC65D" shadow=""
