@@ -20,6 +20,7 @@ let wipWellWithinCutoffValue;
 let wipAboutToMissCutoffValue;
 let totalMissedValue;
 
+
 const totalFunds = 2480;
 const countryFunds = {
     france: 1200,
@@ -173,6 +174,17 @@ const data = {
     },
 }
 
+const scale = {
+    france: 400,
+    germany: 100,
+    italy: 30,
+    luxembourg: 20,
+    india: 300,
+    ireland: 2,
+    global: 400,
+    uk: 5
+}
+
 AFRAME.registerComponent("show-funds", {
     schema: { default: '' },
     init() {
@@ -237,7 +249,7 @@ AFRAME.registerComponent("select-view", {
                 countryFocusPlane.setAttribute("material", `src: #${this.data}Map; transparent: true`);
                 countryFocusPlane.emit("country-map-appearing");
                 countryFocusPlane.setAttribute("visible", "true");
-                document.getElementById("heading").setAttribute("value", countryNames[this.data] + " View");
+                document.getElementById("heading").setAttribute("value", countryNames[this.data]);
                 // globe.emit('goingbackwards');
             }
             const totalFundsProcessed = document.querySelector("#total-processed");
@@ -250,25 +262,71 @@ AFRAME.registerComponent("select-view", {
 
             const totalMissed = document.querySelector("#total-missed");
 
-            
-
-
             const viewData = data[this.data];
             console.log(viewData)
 
-            const deno1 = 500;
-            const deno2 = 100;
-            const deno3 = 200;
+            const deno1 = scale[this.data];
+            const deno2 = scale[this.data];
+            const deno3 = scale[this.data];
+            const gap = 0.5;
 
-            totalFundsProcessed.setAttribute("height", viewData["processed"].total / deno1);
-            fundsProcessedBeforeCutoff.setAttribute("height", viewData["processed"].withinCutoff / deno1);
-            fundsProcessedAfterCutoff.setAttribute("height", viewData["processed"].afterCutoff / deno1);
+            const totalFundsProcessedHeight = viewData["processed"].total / deno1;
+            const fundsProcessedBeforeCutoffHeight = viewData["processed"].withinCutoff / deno1;
+            const fundsProcessedAfterCutoffHeight = viewData["processed"].afterCutoff / deno1;
 
-            totalWIP.setAttribute("height", viewData["wip"].total / deno3);
-            wipWellWithinCutoff.setAttribute("height", viewData["wip"].wellWithinTime / deno3);
-            wipAboutToMissCutoff.setAttribute("height", viewData["wip"].aboutToMissCutoff / deno3);
+            const totalWIPHeight = viewData["wip"].total / deno3;
+            const wipWellWithinCutoffHeight = viewData["wip"].wellWithinTime / deno3;
+            const wipAboutToMissCutoffHeight = viewData["wip"].aboutToMissCutoff / deno3;
 
-            totalMissed.setAttribute("height", viewData["missedCutoff"].total / deno2);
+            const totalMissedHeight = viewData["missedCutoff"].total / deno2;
+
+
+            totalFundsProcessed.setAttribute("height", totalFundsProcessedHeight);
+            fundsProcessedBeforeCutoff.setAttribute("height", fundsProcessedBeforeCutoffHeight);
+            fundsProcessedAfterCutoff.setAttribute("height", fundsProcessedAfterCutoffHeight);
+
+            totalWIP.setAttribute("height", totalWIPHeight);
+            wipWellWithinCutoff.setAttribute("height", wipWellWithinCutoffHeight);
+            wipAboutToMissCutoff.setAttribute("height", wipAboutToMissCutoffHeight);
+
+            totalMissed.setAttribute("height", totalMissedHeight);
+
+            this.totalFundsProcessedValue = document.querySelector("#total-processed-value");
+            this.fundsProcessedBeforeCutoffValue = document.querySelector("#processed-before-cutoff-value");
+            this.fundsProcessedAfterCutoffValue = document.querySelector("#processed-after-cutoff-value");
+
+            this.totalWIPValue = document.querySelector("#total-wip-value");
+            this.wipWellWithinCutoffValue = document.querySelector("#wip-well-within-cutoff-value");
+            this.wipAboutToMissCutoffValue = document.querySelector("#wip-about-to-miss-cutoff-value");
+
+            this.totalMissedValue = document.querySelector("#total-missed-value");
+
+            this.totalFundsProcessedValue.setAttribute("value", viewData["processed"].total);
+            // const totalFundsProcessedPos = this.totalFundsProcessed.getAttribute("position");
+            this.totalFundsProcessedValue.setAttribute("position", { x: -0.681, y: totalFundsProcessedHeight / 2 + gap, z: 0 });
+
+            this.fundsProcessedBeforeCutoffValue.setAttribute("value", viewData["processed"].withinCutoff);
+            // const fundsProcessedBeforeCutoffPos = this.fundsProcessedBeforeCutoff.getAttribute("position");
+            this.fundsProcessedBeforeCutoffValue.setAttribute("position", { x: -0.681, y: fundsProcessedBeforeCutoffHeight / 2 + gap, z: 0 });
+
+            this.fundsProcessedAfterCutoffValue.setAttribute("value", viewData["processed"].afterCutoff);
+            // const fundsProcessedAfterCutoffPos = this.fundsProcessedAfterCutoff.getAttribute("position");
+            this.fundsProcessedAfterCutoffValue.setAttribute("position", { x: -0.681, y: fundsProcessedAfterCutoffHeight / 2 + gap, z: 0 });
+
+
+            this.totalWIPValue.setAttribute("value", viewData["wip"].total);
+            this.totalWIPValue.setAttribute("position", { x: -0.681, y: totalWIPHeight / 2 + gap, z: 0 });
+
+            this.wipWellWithinCutoffValue.setAttribute("value", viewData["wip"].wellWithinTime);
+            this.wipWellWithinCutoffValue.setAttribute("position", { x: -0.681, y: wipWellWithinCutoffHeight / 2 + gap, z: 0 });
+
+            this.wipAboutToMissCutoffValue.setAttribute("value", viewData["wip"].aboutToMissCutoff);
+            this.wipAboutToMissCutoffValue.setAttribute("position", { x: -0.681, y: wipAboutToMissCutoffHeight / 2 + gap, z: 0 });
+
+            this.totalMissedValue.setAttribute("value", viewData["missedCutoff"].total);
+            // const totalMissedPos = this.totalMissed.getAttribute("position");
+
+            this.totalMissedValue.setAttribute("position", { x: -0.681, y: totalMissedHeight / 2 + gap, z: 0 });
         })
     }
 })
@@ -288,44 +346,66 @@ AFRAME.registerComponent("global-view", {
     schema: { default: "" },
     init() {
         document.querySelector('a-scene').addEventListener('loaded', () => {
+            const gap = 0.5;
+
             console.log('loaded')
             this.totalFundsProcessed = document.querySelector("#total-processed");
             this.fundsProcessedBeforeCutoff = document.querySelector("#processed-before-cutoff");
             this.fundsProcessedAfterCutoff = document.querySelector("#processed-after-cutoff");
-        
+
             this.totalWIP = document.querySelector("#total-wip");
             this.wipWellWithinCutoff = document.querySelector("#wip-well-within-cutoff");
             this.wipAboutToMissCutoff = document.querySelector("#wip-about-to-miss-cutoff");
-        
+
             this.totalMissed = document.querySelector("#total-missed");
-        
+
             const viewData = data["global"];
             console.log(viewData)
-        
-            const deno1 = 500;
-            const deno2 = 100;
-            const deno3 = 200;
-        
+
+            const deno1 = scale["global"];
+            const deno2 = scale["global"];
+            const deno3 = scale["global"];
+
+            const totalFundsProcessedHeight = viewData["processed"].total / deno1;
+            const fundsProcessedBeforeCutoffHeight = viewData["processed"].withinCutoff / deno1;
+            const fundsProcessedAfterCutoffHeight = viewData["processed"].afterCutoff / deno1;
+
+            const totalWIPHeight = viewData["wip"].total / deno3;
+            const wipWellWithinCutoffHeight = viewData["wip"].wellWithinTime / deno3;
+            const wipAboutToMissCutoffHeight = viewData["wip"].aboutToMissCutoff / deno3;
+
+            const totalMissedHeight = viewData["missedCutoff"].total / deno2;
+
             this.totalFundsProcessed.setAttribute("height", viewData["processed"].total / deno1);
             this.fundsProcessedBeforeCutoff.setAttribute("height", viewData["processed"].withinCutoff / deno1);
             this.fundsProcessedAfterCutoff.setAttribute("height", viewData["processed"].afterCutoff / deno1);
-        
-            this.totalWIP.setAttribute("height", viewData["wip"].total / deno3);
-            this.wipWellWithinCutoff.setAttribute("height", viewData["wip"].wellWithinTime / deno3);
-            this.wipAboutToMissCutoff.setAttribute("height", viewData["wip"].aboutToMissCutoff / deno3);
-        
-            this.totalMissed.setAttribute("height", viewData["missedCutoff"].total / deno2);
 
+            this.totalWIP.setAttribute("height", viewData["wip"].total / deno1);
+            this.wipWellWithinCutoff.setAttribute("height", viewData["wip"].wellWithinTime / deno1);
+            this.wipAboutToMissCutoff.setAttribute("height", viewData["wip"].aboutToMissCutoff / deno1);
+
+            this.totalMissed.setAttribute("height", viewData["missedCutoff"].total / deno1);
 
             this.totalFundsProcessedValue = document.querySelector("#total-processed-value");
+            this.totalFundsProcessedValue.setAttribute("position", { x: -0.681, y: totalFundsProcessedHeight / 2 + gap, z: 0 });
+
             this.fundsProcessedBeforeCutoffValue = document.querySelector("#processed-before-cutoff-value");
+            this.fundsProcessedBeforeCutoffValue.setAttribute("position", { x: -0.681, y: fundsProcessedBeforeCutoffHeight / 2 + gap, z: 0 });
+
             this.fundsProcessedAfterCutoffValue = document.querySelector("#processed-after-cutoff-value");
+            this.fundsProcessedAfterCutoffValue.setAttribute("position", { x: -0.681, y: fundsProcessedAfterCutoffHeight / 2 + gap, z: 0 });
 
             this.totalWIPValue = document.querySelector("#total-wip-value");
+            this.totalWIPValue.setAttribute("position", { x: -0.681, y: totalWIPHeight / 2 + gap, z: 0 });
+
             this.wipWellWithinCutoffValue = document.querySelector("#wip-well-within-cutoff-value");
+            this.wipWellWithinCutoffValue.setAttribute("position", { x: -0.681, y: wipWellWithinCutoffHeight / 2 + gap, z: 0 });
+
             this.wipAboutToMissCutoffValue = document.querySelector("#wip-about-to-miss-cutoff-value");
+            this.wipAboutToMissCutoffValue.setAttribute("position", { x: -0.681, y: wipAboutToMissCutoffHeight / 2 + gap, z: 0 });
 
             this.totalMissedValue = document.querySelector("#total-missed-value");
+            this.totalMissedValue.setAttribute("position", { x: -0.681, y: totalMissedHeight / 2 + gap, z: 0 });
 
             this.totalFundsProcessedValue.setAttribute("value", viewData["processed"].total);
             this.fundsProcessedBeforeCutoffValue.setAttribute("value", viewData["processed"].withinCutoff);
@@ -343,29 +423,37 @@ AFRAME.registerComponent("global-view", {
 AFRAME.registerComponent("swap-teams", {
     schema: { default: "" },
     init() {
-            var p1 = document.querySelector('#first_p');
-            var p2 = document.querySelector('#second_p');
-            var p3 = document.querySelector('#third_p');
-            var p4 = document.querySelector('#fourth_p');
-                this.el.addEventListener('click',()=> {
-                    var zval = this.el.getAttribute("position").z;
-                    var temp= p1;
-                    if(p1.getAttribute('position').z==19.739313708201305)
-                        temp = p1;
-                    if(p2.getAttribute('position').z==19.739313708201305)
-                        temp = p2;
-                    if(p3.getAttribute('position').z==19.739313708201305)
-                        temp = p3;
-                    if(p4.getAttribute('position').z==19.739313708201305)
-                        temp = p4;
+        var p1 = document.querySelector('#first_p');
+        var p2 = document.querySelector('#second_p');
+        var p3 = document.querySelector('#third_p');
+        var p4 = document.querySelector('#fourth_p');
+        this.el.addEventListener('click', () => {
+            var xval = this.el.getAttribute("position").x;
+            console.log(xval);
+            var temp = p1;
+            if (p1.getAttribute('position').x == 210.74)
+                temp = p1;
+            if (p2.getAttribute('position').x == 210.74)
+                temp = p2;
+            if (p3.getAttribute('position').x == 210.74)
+                temp = p3;
+            if (p4.getAttribute('position').x == 210.74)
+                temp = p4;
 
-                    if(zval == 13.739313708201305)
-                        temp.emit("four");
-                    else if(zval == 15.739313708201305)
-                        temp.emit("three");
-                    else if(zval == 17.739313708201305)
-                        temp.emit("two");
-                    this.el.emit("one");
+            console.log(temp);
+            if (xval != 210.74) {
+                if (xval == 240.74) {
+                    temp.emit("four");
+                    console.log("moving to four: " + temp);
+                }
+                else if (xval == 230.74)
+                    temp.emit("three");
+                else if (xval == 220.74)
+                    temp.emit("two");
+
+
+                this.el.emit("one");
+            }
         })
     }
 })
