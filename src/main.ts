@@ -423,40 +423,41 @@ AFRAME.registerComponent("global-view", {
 AFRAME.registerComponent("swap-teams", {
     schema: { default: "" },
     init() {
-        var p1 = document.querySelector('#first_p');
-        var p2 = document.querySelector('#second_p');
-        var p3 = document.querySelector('#third_p');
-        var p4 = document.querySelector('#fourth_p');
-        this.el.addEventListener('click', () => {
-            var xval = this.el.getAttribute("position").x;
-            console.log(xval);
-            var temp = p1;
-            if (p1.getAttribute('position').x == 210.74)
-                temp = p1;
-            if (p2.getAttribute('position').x == 210.74)
-                temp = p2;
-            if (p3.getAttribute('position').x == 210.74)
-                temp = p3;
-            if (p4.getAttribute('position').x == 210.74)
-                temp = p4;
+            var p1 = document.querySelector('#first_p');
+            var p2 = document.querySelector('#second_p');
+            var p3 = document.querySelector('#third_p');
+            var p4 = document.querySelector('#fourth_p');
+                this.el.addEventListener('click',()=> {
+                    var xval = this.el.getAttribute("position").x;
+                    console.log(xval);
+                    var temp= p1;
+                    if(p1.getAttribute('position').x==210.74)
+                        temp = p1;
+                    if(p2.getAttribute('position').x==210.74)
+                        temp = p2;
+                    if(p3.getAttribute('position').x==210.74)
+                        temp = p3;
+                    if(p4.getAttribute('position').x==210.74)
+                        temp = p4;
 
-            console.log(temp);
-            if (xval != 210.74) {
-                if (xval == 240.74) {
-                    temp.emit("four");
-                    console.log("moving to four: " + temp);
-                }
-                else if (xval == 230.74)
-                    temp.emit("three");
-                else if (xval == 220.74)
-                    temp.emit("two");
+                        console.log(temp);
+                    if(xval!=210.74)  
+                    {
+                    if(xval == 240.74)
+                        {temp.emit("four");
+                        console.log("moving to four: "+temp);}
+                    else if(xval == 230.74)
+                        temp.emit("three");
+                    else if(xval == 220.74)
+                        temp.emit("two");
 
 
-                this.el.emit("one");
-            }
+                    this.el.emit("one");
+                    }
         })
     }
 })
+
 
 // var cameraEl = document.querySelector('#camera');
 // var worldPos = new THREE.Vector3();

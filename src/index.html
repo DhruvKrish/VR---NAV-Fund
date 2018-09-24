@@ -12,7 +12,7 @@
 
 <body>
     <div id="container"></div>
-    <a-scene global-view>
+    <a-scene global-view sound="src: #space-sound; volume:50; loop: true; autoplay: true" preload="auto">
         <a-assets>
             <img id="franceMap" src="./assets/france3dMap.png">
             <img id="germanyMap" src="./assets/germany3dMap.png">
@@ -31,13 +31,15 @@
             <img id="germanyTest" src="./assets/germanyTest.jpg">
             <audio id="click-sound" src="./assets/click.mp3"></audio>
             <audio id="click-sound-2" src="./assets/Sound Effects Button.mp3"></audio>
+            <audio id="space-sound" src="./assets/space-sound-intersteller.mp3"></audio>
         </a-assets>
 
         <a-camera id="camera" position="0.6 1 20">
+            <!-- <a-animation attribute="rotation" to="-14.209 -90 0" begin="rotateCamera" dur="1000"></a-animation> -->
             <a-cursor raycaster="objects: .clickable" color="black" fuse="true" fuse-timeout="2000" sound="src: #click-sound-2; volume:1; on: click;">
-                <a-animation begin="click" easing="ease-in" attribute="scale" dur="150" fill="forwards" from="0.1 0.1 0.1"
-                    to="1 1 1"></a-animation>
-                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500" fill="backwards" from="1 1 1"
+                <!-- <a-animation begin="click" easing="ease-in" attribute="scale" dur="150" fill="forwards" from="0.1 0.1 0.1"
+                    to="1 1 1"></a-animation> -->
+                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="2000" fill="backwards" from="1 1 1"
                     to="0.1 0.1 0.1"></a-animation>
                 <!-- <a-sound src="#click-sound" volume="5" on="click" autoplay="true"></a-sound> -->
             </a-cursor>
@@ -221,27 +223,27 @@
             </a-entity>
 
             <a-entity scale="1 2 1" position="14.237213066097114 -22.439340701451734 10.286429526034176">
-                <a-cylinder id="total-wip" position="24.305 10.393342416125707 -9.718" radius="0.5" height="1" color="#FFC65D"
-                    shadow="" material="color:#00f900" geometry="" scale="2 2 2" opacity="0.85" rotation="10 0 0">
+                <a-cylinder id="total-wip" position="24.305 10.393342416125707 -9.718" radius="0.5" height="1" color="#0066ff"
+                    shadow="" material="color:#0066ff" geometry="" scale="2 2 2" opacity="0.85" rotation="10 0 0">
                     <a-text id="total-wip-value" position="-1 2.145 0" value="2" color="#942192" text="color:#fffb00"
                         scale="3 3 3"></a-text>
                 </a-cylinder>
 
                 <a-cylinder id="wip-well-within-cutoff" position="21.387298479699552 10.867872983315282 -9.951949076143212"
-                    radius="0.5" height="2.48" color="#FFC65D" shadow="" material="color:#116810" geometry="" scale="2 2 2"
+                    radius="0.5" height="2.48" color="#0000cc" shadow="" material="color:#0000cc" geometry="" scale="2 2 2"
                     opacity="0.85" rotation="10 0 0">
                     <a-text id="wip-well-within-cutoff-value" position="-1 2.145 0" value="1467" color="#942192" text="color:#fffb00"
                         scale="3 3 3"></a-text>
                 </a-cylinder>
 
                 <a-cylinder id="wip-about-to-miss-cutoff" position="27.17551520705073 9.419868951351735 -9.647782045203476"
-                    radius="0.5" height="0.4575" color="#FFC65D" shadow="" material="color:#ff9300" geometry="height:0.458"
+                    radius="0.5" height="0.4575" color="#ff00bf" shadow="" material="color:#ff00bf" geometry="height:0.458"
                     scale="2 2 2" opacity="0.85" rotation="10 0 0">
                     <a-text id="wip-about-to-miss-cutoff-value" position="-1 2.145 0" value="183" color="#942192" text="color:#fffb00"
                         scale="3 3 3"></a-text>
                 </a-cylinder>
 
-                <a-text position="18.317993687516115 8.607960517221565 0" scale="3 3 3" text="width:6;value:Work in progress;color:#942192"></a-text>
+                <a-text position="17.317993687516115 9 0" scale="3 3 3" text="width:6;value:Work in progress;color:#942192"></a-text>
             </a-entity>
 
             <a-entity scale="1 2 1" position="12.655622540405858 -17.19439006634812 9.243759118751031">
@@ -252,16 +254,16 @@
                         scale="2 2 3"></a-text>
                 </a-cylinder> -->
                 <a-cylinder id="total-missed" position="13.051643432076844 8.997172671706545 -9.718" radius="0.5"
-                    height="0.3" color="#FFC65D" shadow="" material="color:#00f900" geometry="" scale="2 2 2" opacity="0.85"
+                    height="0.3" color="#ff2600" shadow="" material="color:#ff2600" geometry="" scale="2 2 2" opacity="0.85"
                     rotation="10 0 0">
                     <a-text id="total-missed-value" position="-0.681 1 0" value="15" color="#942192" text="color:#fffb00"
                         scale="3 3 3"></a-text>
                 </a-cylinder>
 
-                <a-text position="11.398491202740178 7.412131365436734 0" scale="3 3 3" text="width:6;value:Missed cutoff;color:#942192"></a-text>
+                <a-text position="11.398491202740178 8.152131365436734 0" scale="3 3 3" text="width:6;value:Missed cutoff;color:#942192"></a-text>
             </a-entity>
 
-            <a-entity position="0 -29.288 0">
+            <a-entity position="206.773 -131 -267.157" scale="3 3 3" rotation="0 45 0">
                 <!-- <a-plane select-view="global" color="red" position="-44.25821416881983 67.41215543263482 -48.377421518056366"
                       geometry="" scale="10 10 10" rotation="0 45 0"></a-plane> -->
 
@@ -274,13 +276,13 @@
                         geometry="" visible=""></a-box>
                     <a-box position="-12.563 12.968 -8.757" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
                         geometry="" visible=""></a-box>
-                    <a-box position="-12.563 8 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                    <a-box position="-12.563 8 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff2600"
                         geometry="" visible=""></a-box>
-                    <a-box position="-12.563 6 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                    <a-box position="-12.563 6 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#0066ff"
                         geometry="" visible=""></a-box>
-                    <a-box position="-12.563 4 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                    <a-box position="-12.563 4 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff00bf"
                         geometry="" visible=""></a-box>
-                    <a-box position="-12.563 2 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#ff9300"
+                    <a-box position="-12.563 2 -8.6" depth="0.5" height="0.5" width="0.5" material="color:#0000cc"
                         geometry="" visible=""></a-box>
                 </a-entity>
 
@@ -289,9 +291,9 @@
                     <a-text position="-11.707 11.331 -9.275" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of funds processed within cutoff"></a-text>
                     <a-text position="-11.492 12.719 -8.975" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:No. of funds processed after cutoff"></a-text>
                     <a-text position="-11.492 8 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:Total - Missed Cutoff"></a-text>
-                    <a-text position="-11.492 6 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:Total WIP"></a-text>
-                    <a-text position="-11.492 4 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:About to miss cutoff"></a-text>
-                    <a-text position="-11.492 2 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:Well within time"></a-text>
+                    <a-text position="-11.492 6.2 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:Total WIP"></a-text>
+                    <a-text position="-11.492 4.4 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:About to miss cutoff"></a-text>
+                    <a-text position="-11.492 2.5 -8.6" color="black" scale="3.7 3.7 3.7" text="color:#00fdff;value:Well within time"></a-text>
                 </a-entity>
             </a-entity>
 
@@ -348,165 +350,423 @@
 
 
         <a-entity>
-            <a-plane id='first_p' class="clickable" position="210.74 -50.786 29.689" rotation="0 -90 0" geometry="primitive:plane;height:32;width:50"
-                scale="5 5 5" swap-teams="first" material='shader:flat;side:front; color:yellow; transparent:false;opacity:40'>
+            <a-plane  id='first_p' position="210.74 -50.786 29.689" rotation="0 -90 0" 
+            geometry="primitive:plane;height:35;width:50" scale="5 5 5" swap-teams="first"
+            material='shader:flat;side:front; transparent:false;opacity:40' color='#ffff80'>
 
-                <a-animation begin='four' attribute='position' begin="2000" to="240.74 40.786 2.689" dur='2000'></a-animation>
-                <a-animation begin='three' attribute='position' begin="2000" to="230.74 10.786 9.689" dur='2000'></a-animation>
-                <a-animation begin='two' attribute='position' begin="2000" to="220.74 -20.786 20.689" dur='2000'></a-animation>
-                <a-animation begin='one' attribute='position' begin="2000" to="210.74 -50.786 29.689" dur='2000'></a-animation>
+                  <a-animation begin='four' attribute='position' begin="2000" 
+                to="240.74 40.786 2.689" dur='2000'></a-animation>
+                <a-animation begin='three' attribute='position' begin="2000" 
+                to="230.74 10.786 9.689" dur='2000'></a-animation>
+                <a-animation begin='two' attribute='position' begin="2000" 
+                to="220.74 -20.786 20.689" dur='2000'></a-animation>
+                <a-animation begin='one' attribute='position' begin="2000" 
+                to="210.74 -50.786 29.689" dur='2000'></a-animation>
+            
+      
+           <a-entity    position="10 15 0.8" text="value: DIV-1; color: black; height: 10; width: 50; align: left"></a-entity>
+           <a-entity position="-13, 0, 0.8" text="value: Metro|Gest|CPR|LYX|S2G|SG29;  height: 5; transparent: false; width: 25; baseline: top; align: center; color : black"></a-entity>
+ 
+            <a-box height="5" width=".8" position="-20.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-20.229 2 0" color="#47d147"></a-box>
 
+            <a-box height="8" width=".8" position="-16.229 7.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-16.229 2 0" color="#47d147"></a-box>
 
+            <a-box height="5" width=".8" position="-12.829 6.95 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="-12.829 2.471 0" color="#47d147"></a-box>
 
+            <a-box height="5" width=".8" position="-10.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-10.229 2 0" color="#47d147"></a-box>
 
+            <a-box height="3" width=".8" position="-8.229 3 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="-8.229 1.039 0" color="#47d147"></a-box>
 
+            <a-box height="2" width=".8" position="-6.229 4.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-6.229 2 0" color="#47d147"></a-box>
 
-                <a-entity position="-18, 2, 10" text="value: hjashjfafkafkjakfjahfajkfhja; color: blue; height: 10;  width: 50; baseline: top; align: center;"></a-entity>
+      <a-entity  line="start: -20, -5, 0.8; end: -3, -5, 0.8; color: black;"
+                      line__1="start: -20, -5, 0.8; end: -20, 12, 0.8; color: black"></a-entity>
 
-                <!--   <a-entity rotation="-12 11.20 12" position="-120 4.522 12" text="value: first-v; color: black; height: 6; width: 10; baseline: top; align: center"></a-entity>
-            <a-entity position="0 0 0" text="value: first-h; color: black; height: 6; transparent: false; width: 10; baseline: top; align: center; color : black"></a-entity>-->
+ <a-entity position="7, 2, 0.8" text="value: 9:30|10:0|11:30|12:00|12:30|1:00; color: black; height: 5; transparent: false; width: 25; baseline: top; align: center; "></a-entity>
 
-                <a-box height="5" width=".8" position="-20.229 6 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="-20.229 2 0" color="green"></a-box>
+            <!-- 2nd graph-->
+            <a-box height="5" width=".8" position="1.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="1.229 2 0" color="#47d147"></a-box>
 
-                <a-box height="8" width=".8" position="-18.229 7.5 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="-18.229 2 0" color="green"></a-box>
+            <a-box height="8" width=".8" position="4.229 7.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="4.229 2 0" color="#47d147"></a-box>
 
-                <a-box height="5" width=".8" position="-16.229 6.95 0" color="red"></a-box>
-                <a-box height="4" width=".8" position="-16.229 2.471 0" color="green"></a-box>
+            <a-box height="5" width=".8" position="7.229 6.671 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="7.229 2.471 0" color="#47d147"></a-box>
 
-                <a-box height="5" width=".8" position="-14.229 6 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="-14.229 2 0" color="green"></a-box>
+            <a-box height="5" width=".8" position="12.0 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="12.0 2 0" color="#47d147"></a-box>
 
-                <a-box height="3" width=".8" position="-12.229 3 0" color="red"></a-box>
-                <a-box height="1" width=".8" position="-12.229 1.039 0" color="green"></a-box>
+            <a-box height="3" width=".8" position="15.229 3 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="15.229 1.039 0" color="#47d147"></a-box>
 
-                <a-box height="2" width=".8" position="-10.229 4.5 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="-10.229 2 0" color="green"></a-box>
+            <a-box height="2" width=".8" position="18.229 4.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="18.229 2 0" color="#47d147"></a-box>
 
-                <a-entity line="start: -18, 2, 10; end: -3, 2, 10; color: blue;" line__1="start: -18, 2, 10; end: -18, 12, 10; color: blue"></a-entity>
+ <a-entity line__2="start: -18, -9, 0.8; end: -2, -9, 0.8; color: black;"
+                      line__3="start: -18, -9, 0.8; end: -18, 1, 0.8; color: black"></a-entity>
 
+         
+            <!-- 3rd graph-->
 
-                <!-- 2nd graph-->
-                <a-box height="5" width=".8" position="1.229 6 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="1.229 2 0" color="green"></a-box>
+            <a-box height="5" width=".8" position="-20.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-20.229 -12 0" color="#47d147"></a-box>
 
-                <a-box height="8" width=".8" position="3.229 7.5 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="3.229 2 0" color="green"></a-box>
+            <a-box height="8" width=".8" position="-17.229 -6.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-17.229 -12 0" color="#47d147"></a-box>
 
-                <a-box height="5" width=".8" position="5.229 6.671 0" color="red"></a-box>
-                <a-box height="4" width=".8" position="5.229 2.471 0" color="green"></a-box>
+            <a-box height="5" width=".8" position="-14.229 -7 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="-14.229 -11.5 0" color="#47d147"></a-box>
 
-                <a-box height="5" width=".8" position="7.229 6 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="7.229 2 0" color="green"></a-box>
+            <a-box height="5" width=".8" position="-10.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-10.229 -12 0" color="#47d147"></a-box>
 
-                <a-box height="3" width=".8" position="9.229 3 0" color="red"></a-box>
-                <a-box height="1" width=".8" position="9.229 1.039 0" color="green"></a-box>
+            <a-box height="3" width=".8" position="-7.229 -11 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="-7.229 -13 0" color="#47d147"></a-box>
 
-                <a-box height="2" width=".8" position="11.229 4.5 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="11.229 2 0" color="green"></a-box>
+            <a-box height="2" width=".8" position="-5.229 -9.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-5.229 -12 0" color="#47d147"></a-box>
 
+           
+ 
+            <a-entity line__4="start: -1, 2, 0.8; end: 15, 2, 0.8; color: black;"
+                      line__5="start: -1, 2, 0.8; end: -1, 12, 0.8; color: black"></a-entity>
 
-                <!-- <a-entity line__3="start: 1, 0, 0; end:1, 8,0; color: blue;"
-                      line__4="start: 1, 0, 0; end: 13.229, 0, 0; color: blue"></a-entity>
-            <a-entity rotation="4.272 10.93 84.26" position="-13 -4.522 .7" text="value: second-v; color: blue; height: 6; width: 10; baseline: top; align: center"></a-entity>
-            <a-entity position="-8 -6.3 3" text="value: second-h; color: #000000; height: 6; transparent: true; width: 10; baseline: top; align: center; color : blue"></a-entity>-->
+                        <a-entity position="-10, -9.2, 0.8" text="value: SP-1|SP-2|SP-3|SP-4|SP-5|SP-6; color: black; height: 5; transparent: false; width: 25; baseline: top; align: center"></a-entity>
 
-                <a-entity line__3="start: -1, 2, 10; end: 15, 2, 10; color: blue;" line__4="start: -1, 2, 10; end: -1, 12, 10; color: blue"></a-entity>
+           
+            <a-box height="5" width=".8" position="1.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="1.229 -12 0" color="#47d147"></a-box>
 
-                <!-- 3rd graph-->
+            <a-box height="8" width=".8" position="5.229 -6.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="5.229 -12 0" color="#47d147"></a-box>
 
-                <a-box height="5" width=".8" position="-20.229 -8 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="-20.229 -12 0" color="green"></a-box>
+            <a-box height="5" width=".8" position="8.229 -7 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="8.229 -11.5 0" color="#47d147"></a-box>
 
-                <a-box height="8" width=".8" position="-18.229 -6.5 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="-18.229 -12 0" color="green"></a-box>
+            <a-box height="5" width=".8" position="11.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="11.229 -12 0" color="#47d147"></a-box>
 
-                <a-box height="5" width=".8" position="-16.229 -7 0" color="red"></a-box>
-                <a-box height="4" width=".8" position="-16.229 -11.5 0" color="green"></a-box>
+            <a-box height="3" width=".8" position="14.229 -11 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="14.229 -13 0" color="#47d147"></a-box>
 
-                <a-box height="5" width=".8" position="-14.229 -8 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="-14.229 -12 0" color="green"></a-box>
-
-                <a-box height="3" width=".8" position="-12.229 -11 0" color="red"></a-box>
-                <a-box height="1" width=".8" position="-12.229 -13 0" color="green"></a-box>
-
-                <a-box height="2" width=".8" position="-10.229 -9.5 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="-10.229 -12 0" color="green"></a-box>
-
-                <a-entity line__5="start: -18, -9, 10; end: -2, -9, 10; color: blue;" line__6="start: -18, -9, 10; end: -18, 1, 10; color: blue"></a-entity>
-
-
-                <!-- <a-entity line__5="start: -13.229, -8, 0; end: -13.229, -1, 0; color: blue;"
-                      line__6="start: -13.229, -8, 0; end: -1.229, -8, 0; color: blue"></a-entity>
-            <a-entity rotation="6.592 12.37 89.81" position="0.6 4.522 .7" text="value: third-v; color: blue; height: 6; width: 10; baseline: top; align: center"></a-entity>
-            <a-entity position="6 0 3" text="value: third-h; color: #000000; height: 6; transparent: true; width: 10; baseline: top; align: center; color : blue"></a-entity>-->
-
-                <!-- 4th graph-->
-
-                <a-box height="5" width=".8" position="1.229 -8 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="1.229 -12 0" color="green"></a-box>
-
-                <a-box height="8" width=".8" position="3.229 -6.5 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="3.229 -12 0" color="green"></a-box>
-
-                <a-box height="5" width=".8" position="5.229 -7 0" color="red"></a-box>
-                <a-box height="4" width=".8" position="5.229 -11.5 0" color="green"></a-box>
-
-                <a-box height="5" width=".8" position="7.229 -8 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="7.229 -12 0" color="green"></a-box>
-
-                <a-box height="3" width=".8" position="9.229 -11 0" color="red"></a-box>
-                <a-box height="1" width=".8" position="9.229 -13 0" color="green"></a-box>
-
-                <a-box height="2" width=".8" position="11.229 -9.5 0" color="red"></a-box>
-                <a-box height="3" width=".8" position="11.229 -12 0" color="green"></a-box>
+            <a-box height="2" width=".8" position="18.229 -9.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="18.229 -12 0" color="#47d147"></a-box>
 
 
-                <a-entity line__7="start: -1, -9, 10; end: 15, -9, 10; color: blue;" line__8="start: -1, -9, 10; end: -1, 1, 10; color: blue"></a-entity>
+ <a-entity line__6="start: -1, -9, 0.8; end: 15, -9, 0.8; color: black;"
+                      line__7="start: -1, -9, 0.8; end: -1, 1, 0.8; color: black"></a-entity>
+
+                       <a-entity position="7, -9.2, 0.8" text="value: AG-1|AG-2|AG-3|AG-4|AG-5|AG-6; color: black; height: 5; transparent: false; width: 25; baseline: top; align: center"></a-entity>
+
+      
+        </a-entity>
+        </a-plane>
+        </a-entity>
+       
+
+     <a-entity>
+            <a-plane id='second_p' class="clickable" position="220.74 -20.786 20.689" rotation="0 -90 0" 
+            geometry="primitive:plane;height:32;width:50" scale="5 5 5" swap-teams="second"
+            material='shader:flat ' color='#bbff99'> 
+                <a-animation begin='four' attribute='position' begin="2000" 
+                to="240.74 40.786 2.689" dur='2000'></a-animation>
+                <a-animation begin='three' attribute='position' begin="2000" 
+                to="230.74 10.786 9.689" dur='2000'></a-animation>
+                <a-animation begin='two' attribute='position' begin="2000" 
+                to="220.74 -20.786 20.689" dur='2000'></a-animation>
+                <a-animation begin='one' attribute='position' begin="2000" 
+                to="210.74 -50.786 29.689" dur='2000'></a-animation>
+            
+        
+            <a-box height="5" width=".8" position="-20.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-20.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="-16.229 7.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-16.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-12.829 6.95 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="-12.829 2.471 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-10.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-10.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="-8.229 3 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="-8.229 1.039 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="-6.229 4.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-6.229 2 0" color="#47d147"></a-box>
+
+ 
+            <!-- 2nd graph-->
+            <a-box height="5" width=".8" position="1.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="1.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="4.229 7.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="4.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="7.229 6.671 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="7.229 2.471 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="12.0 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="12.0 2 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="15.229 3 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="15.229 1.039 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="18.229 4.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="18.229 2 0" color="#47d147"></a-box>
+
+         
+            <!-- 3rd graph-->
+
+            <a-box height="5" width=".8" position="-20.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-20.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="-17.229 -6.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-17.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-14.229 -7 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="-14.229 -11.5 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-10.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-10.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="-7.229 -11 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="-7.229 -13 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="-5.229 -9.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-5.229 -12 0" color="#47d147"></a-box>
+
+           
+ 
+           
+            <a-box height="5" width=".8" position="1.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="1.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="5.229 -6.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="5.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="8.229 -7 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="8.229 -11.5 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="11.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="11.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="14.229 -11 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="14.229 -13 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="18.229 -9.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="18.229 -12 0" color="#47d147"></a-box>
 
 
-                <!-- <a-entity line__7="start: 1, -8, 0; end: 1, -1, 0; color: blue;"
-                      line__8="start: 1, -8, 0; end: 14, -8, 0; color: blue"></a-entity>
-            <a-entity rotation="6.548 12.02 88.54" position="0.6 -4.522 .7" text="value: fourth-v; color: blue; height: 6; width: 10; baseline: top; align: center"></a-entity>
-            <a-entity position="6 -6.3 3" text="value: fourth-h; color: #000000; height: 4; transparent: true; width: 10; baseline: top; align: center; color : blue"></a-entity>-->
 
+      
         </a-entity>
         </a-plane>
         </a-entity>
 
+       <a-entity>
+            <a-plane id='third_p' class="clickable" position="230.74 10.786 11.689" rotation="0 -90 0" 
+            geometry="primitive:plane;height:32;width:50" scale="5 5 5" swap-teams="third"
+            material='side:double;  transparent:true;opacity:1' color='#99ddff'>
+                   <a-animation begin='four' attribute='position' begin="2000" 
+                to="240.74 40.786 2.689" dur='2000'></a-animation>
+                <a-animation begin='three' attribute='position' begin="2000" 
+                to="230.74 10.786 9.689" dur='2000'></a-animation>
+                <a-animation begin='two' attribute='position' begin="2000" 
+                to="220.74 -20.786 20.689" dur='2000'></a-animation>
+                <a-animation begin='one' attribute='position' begin="2000" 
+                to="210.74 -50.786 29.689" dur='2000'></a-animation>
+            
+     
+            <a-box height="5" width=".8" position="-20.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-20.229 2 0" color="#47d147"></a-box>
 
-        <a-entity>
-            <a-plane id='second_p' class="clickable" position="220.74 -20.786 20.689" rotation="0 -90 0" geometry="primitive:plane;height:32;width:50"
-                scale="5 5 5" swap-teams="second" material='shader:flat ;color:red'>
-                <a-animation begin='four' attribute='position' begin="2000" to="240.74 40.786 2.689" dur='2000'></a-animation>
-                <a-animation begin='three' attribute='position' begin="2000" to="230.74 10.786 9.689" dur='2000'></a-animation>
-                <a-animation begin='two' attribute='position' begin="2000" to="220.74 -20.786 20.689" dur='2000'></a-animation>
-                <a-animation begin='one' attribute='position' begin="2000" to="210.74 -50.786 29.689" dur='2000'></a-animation>
+            <a-box height="8" width=".8" position="-16.229 7.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-16.229 2 0" color="#47d147"></a-box>
 
-            </a-plane>
+            <a-box height="5" width=".8" position="-12.829 6.95 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="-12.829 2.471 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-10.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-10.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="-8.229 3 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="-8.229 1.039 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="-6.229 4.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-6.229 2 0" color="#47d147"></a-box>
+
+ 
+            <!-- 2nd graph-->
+            <a-box height="5" width=".8" position="1.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="1.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="4.229 7.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="4.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="7.229 6.671 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="7.229 2.471 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="12.0 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="12.0 2 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="15.229 3 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="15.229 1.039 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="18.229 4.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="18.229 2 0" color="#47d147"></a-box>
+
+            <!-- 3rd graph-->
+
+            <a-box height="5" width=".8" position="-20.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-20.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="-17.229 -6.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-17.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-14.229 -7 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="-14.229 -11.5 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-10.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-10.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="-7.229 -11 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="-7.229 -13 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="-5.229 -9.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-5.229 -12 0" color="#47d147"></a-box>
+
+           
+ 
+           
+            <a-box height="5" width=".8" position="1.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="1.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="5.229 -6.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="5.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="8.229 -7 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="8.229 -11.5 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="11.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="11.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="14.229 -11 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="14.229 -13 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="18.229 -9.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="18.229 -12 0" color="#47d147"></a-box>
+
+
+      </a-entity>
+        </a-plane>
         </a-entity>
 
-        <a-entity>
-            <a-plane id='third_p' class="clickable" position="230.74 10.786 11.689" rotation="0 -90 0" geometry="primitive:plane;height:32;width:50"
-                scale="5 5 5" swap-teams="third" material='side:double; color:blue; transparent:true;opacity:1'>
-                <a-animation begin='four' attribute='position' begin="2000" to="240.74 40.786 2.689" dur='2000'></a-animation>
-                <a-animation begin='three' attribute='position' begin="2000" to="230.74 10.786 9.689" dur='2000'></a-animation>
-                <a-animation begin='two' attribute='position' begin="2000" to="220.74 -20.786 20.689" dur='2000'></a-animation>
-                <a-animation begin='one' attribute='position' begin="2000" to="210.74 -50.786 29.689" dur='2000'></a-animation>
+       <a-entity>
+            <a-plane id='fourth_p' class="clickable" position="240.74 40.786 2.689"  rotation="0 -90 0" 
+            geometry="primitive:plane;height:32;width:50" scale="5 5 5" swap-teams="fourth"
+            material='side:double; color:white; transparent:true;opacity:1'>
+                <a-animation begin='four' attribute='position' begin="2000" 
+                to="240.74 40.786 2.689" dur='2000'></a-animation>
+                <a-animation begin='three' attribute='position' begin="2000" 
+                to="230.74 10.786 9.689" dur='2000'></a-animation>
+                <a-animation begin='two' attribute='position' begin="2000" 
+                to="220.74 -20.786 20.689" dur='2000'></a-animation>
+                <a-animation begin='one' attribute='position' begin="2000" 
+                to="210.74 -50.786 29.689" dur='2000'></a-animation>
+            
+    
+            <a-box height="5" width=".8" position="-20.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-20.229 2 0" color="#47d147"></a-box>
 
-            </a-plane>
+            <a-box height="8" width=".8" position="-16.229 7.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-16.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-12.829 6.95 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="-12.829 2.471 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-10.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-10.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="-8.229 3 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="-8.229 1.039 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="-6.229 4.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-6.229 2 0" color="#47d147"></a-box>
+
+            <!-- 2nd graph-->
+            <a-box height="5" width=".8" position="1.229 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="1.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="4.229 7.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="4.229 2 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="7.229 6.671 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="7.229 2.471 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="12.0 6 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="12.0 2 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="15.229 3 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="15.229 1.039 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="18.229 4.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="18.229 2 0" color="#47d147"></a-box>
+
+        
+            <!-- 3rd graph-->
+
+            <a-box height="5" width=".8" position="-20.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-20.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="-17.229 -6.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-17.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-14.229 -7 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="-14.229 -11.5 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="-10.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-10.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="-7.229 -11 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="-7.229 -13 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="-5.229 -9.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="-5.229 -12 0" color="#47d147"></a-box>
+
+           
+ 
+           
+            <a-box height="5" width=".8" position="1.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="1.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="8" width=".8" position="5.229 -6.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="5.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="8.229 -7 0" color="#ff471a"></a-box>
+            <a-box height="4" width=".8" position="8.229 -11.5 0" color="#47d147"></a-box>
+
+            <a-box height="5" width=".8" position="11.229 -8 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="11.229 -12 0" color="#47d147"></a-box>
+
+            <a-box height="3" width=".8" position="14.229 -11 0" color="#ff471a"></a-box>
+            <a-box height="1" width=".8" position="14.229 -13 0" color="#47d147"></a-box>
+
+            <a-box height="2" width=".8" position="18.229 -9.5 0" color="#ff471a"></a-box>
+            <a-box height="3" width=".8" position="18.229 -12 0" color="#47d147"></a-box>
+
+
+
         </a-entity>
-
-        <a-entity>
-            <a-plane id='fourth_p' class="clickable" position="240.74 40.786 2.689" rotation="0 -90 0" geometry="primitive:plane;height:32;width:50"
-                scale="5 5 5" swap-teams="fourth" material='side:double; color:white; transparent:true;opacity:1'>
-                <a-animation begin='four' attribute='position' begin="2000" to="240.74 40.786 2.689" dur='2000'></a-animation>
-                <a-animation begin='three' attribute='position' begin="2000" to="230.74 10.786 9.689" dur='2000'></a-animation>
-                <a-animation begin='two' attribute='position' begin="2000" to="220.74 -20.786 20.689" dur='2000'></a-animation>
-                <a-animation begin='one' attribute='position' begin="2000" to="210.74 -50.786 29.689" dur='2000'></a-animation>
-
-            </a-plane>
+        </a-plane>
         </a-entity>
 
         <a-plane class="clickable" select-view="global" color="red" position="-31.89603521343605 32.787 -50" geometry="height:3;width:4"
