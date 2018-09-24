@@ -339,6 +339,37 @@ AFRAME.registerComponent("global-view", {
         });
     }
 })
+
+AFRAME.registerComponent("swap-teams", {
+    schema: { default: "" },
+    init() {
+            var p1 = document.querySelector('#first_p');
+            var p2 = document.querySelector('#second_p');
+            var p3 = document.querySelector('#third_p');
+            var p4 = document.querySelector('#fourth_p');
+                this.el.addEventListener('click',()=> {
+                    var zval = this.el.getAttribute("position").z;
+                    var temp= p1;
+                    if(p1.getAttribute('position').z==19.739313708201305)
+                        temp = p1;
+                    if(p2.getAttribute('position').z==19.739313708201305)
+                        temp = p2;
+                    if(p3.getAttribute('position').z==19.739313708201305)
+                        temp = p3;
+                    if(p4.getAttribute('position').z==19.739313708201305)
+                        temp = p4;
+
+                    if(zval == 13.739313708201305)
+                        temp.emit("four");
+                    else if(zval == 15.739313708201305)
+                        temp.emit("three");
+                    else if(zval == 17.739313708201305)
+                        temp.emit("two");
+                    this.el.emit("one");
+        })
+    }
+})
+
 // var cameraEl = document.querySelector('#camera');
 // var worldPos = new THREE.Vector3();
 // worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
